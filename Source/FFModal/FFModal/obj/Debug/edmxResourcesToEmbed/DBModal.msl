@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DBModalStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Areas">
+      <EntityTypeMapping TypeName="DBModal.Area">
+        <MappingFragment StoreEntitySet="Area">
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bonus">
+      <EntityTypeMapping TypeName="DBModal.Bonu">
+        <MappingFragment StoreEntitySet="Bonus">
+          <ScalarProperty Name="BonousPaidID" ColumnName="BonousPaidID" />
+          <ScalarProperty Name="BonousPaidDate" ColumnName="BonousPaidDate" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+          <ScalarProperty Name="NetAmountPaid" ColumnName="NetAmountPaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComissionSettings">
+      <EntityTypeMapping TypeName="DBModal.ComissionSetting">
+        <MappingFragment StoreEntitySet="ComissionSetting">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
+          <ScalarProperty Name="MaxNode" ColumnName="MaxNode" />
+          <ScalarProperty Name="ComissionPercentage" ColumnName="ComissionPercentage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="DBModal.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+          <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
+          <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BenificiaryName" ColumnName="BenificiaryName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="MaratialStatus" ColumnName="MaratialStatus" />
+          <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+          <ScalarProperty Name="CitizenshipID" ColumnName="CitizenshipID" />
+          <ScalarProperty Name="LicenseID" ColumnName="LicenseID" />
+          <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+          <ScalarProperty Name="District" ColumnName="District" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="HomeTelephone" ColumnName="HomeTelephone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Photo" ColumnName="Photo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerComissions">
+      <EntityTypeMapping TypeName="DBModal.CustomerComission">
+        <MappingFragment StoreEntitySet="CustomerComission">
+          <ScalarProperty Name="ComissionID" ColumnName="ComissionID" />
+          <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="ComissionPaidDate" ColumnName="ComissionPaidDate" />
+          <ScalarProperty Name="IsComissionPaid" ColumnName="IsComissionPaid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="DBModal.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaxSettings">
+      <EntityTypeMapping TypeName="DBModal.TaxSetting">
+        <MappingFragment StoreEntitySet="TaxSetting">
+          <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+          <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="DBModal.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
