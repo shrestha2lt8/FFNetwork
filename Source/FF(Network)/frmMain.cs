@@ -22,15 +22,36 @@ namespace FF_Network_
 
         }
 
+        /// <summary>
+        /// Commision menu click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void commisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
 
+        /// <summary>
+        /// About menu click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmAbout frmAbout = new frmAbout();
             frmAbout.ShowDialog();
+        }
+
+        /// <summary>
+        /// Tax menu click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void taxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTax frmTax = new frmTax();
+            frmTax.ShowDialog();
         }
     }
 }
