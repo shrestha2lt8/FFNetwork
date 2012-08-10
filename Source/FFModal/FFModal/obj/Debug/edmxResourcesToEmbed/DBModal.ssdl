@@ -1,31 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="DBModal.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-  <EntityContainer Name="DBModalStoreContainer">
-    <EntitySet Name="Area" EntityType="DBModal.Store.Area" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Bonus" EntityType="DBModal.Store.Bonus" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ComissionSetting" EntityType="DBModal.Store.ComissionSetting" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Customer" EntityType="DBModal.Store.Customer" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CustomerComission" EntityType="DBModal.Store.CustomerComission" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Order" EntityType="DBModal.Store.Order" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TaxSetting" EntityType="DBModal.Store.TaxSetting" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="User" EntityType="DBModal.Store.User" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_Customer_Area" Association="DBModal.Store.FK_Customer_Area">
+<Schema Namespace="NetworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="NetworkModelStoreContainer">
+    <EntitySet Name="Area" EntityType="NetworkModel.Store.Area" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bonus" EntityType="NetworkModel.Store.Bonus" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ComissionSetting" EntityType="NetworkModel.Store.ComissionSetting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customer" EntityType="NetworkModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerComission" EntityType="NetworkModel.Store.CustomerComission" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="NetworkModel.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TaxSetting" EntityType="NetworkModel.Store.TaxSetting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="User" EntityType="NetworkModel.Store.User" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.Store.FK_Customer_Area">
       <End Role="Area" EntitySet="Area" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK_Customer_User" Association="DBModal.Store.FK_Customer_User">
+    <AssociationSet Name="FK_Customer_User" Association="NetworkModel.Store.FK_Customer_User">
       <End Role="User" EntitySet="User" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
-    <AssociationSet Name="FK_CustomerComission_CustomerComission" Association="DBModal.Store.FK_CustomerComission_CustomerComission">
+    <AssociationSet Name="FK_CustomerComission_CustomerComission" Association="NetworkModel.Store.FK_CustomerComission_CustomerComission">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="CustomerComission" EntitySet="CustomerComission" />
     </AssociationSet>
-    <AssociationSet Name="FK_CustomerComission_Order" Association="DBModal.Store.FK_CustomerComission_Order">
+    <AssociationSet Name="FK_CustomerComission_Order" Association="NetworkModel.Store.FK_CustomerComission_Order">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="CustomerComission" EntitySet="CustomerComission" />
     </AssociationSet>
-    <AssociationSet Name="FK_Order_Customer" Association="DBModal.Store.FK_Order_Customer">
+    <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.Store.FK_Order_Customer">
       <End Role="Customer" EntitySet="Customer" />
       <End Role="Order" EntitySet="Order" />
     </AssociationSet>
@@ -131,8 +131,8 @@
     <Property Name="CreatedDate" Type="datetime" Nullable="false" />
   </EntityType>
   <Association Name="FK_Customer_Area">
-    <End Role="Area" Type="DBModal.Store.Area" Multiplicity="1" />
-    <End Role="Customer" Type="DBModal.Store.Customer" Multiplicity="*" />
+    <End Role="Area" Type="NetworkModel.Store.Area" Multiplicity="1" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Area">
         <PropertyRef Name="AreaCode" />
@@ -143,8 +143,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Customer_User">
-    <End Role="User" Type="DBModal.Store.User" Multiplicity="1" />
-    <End Role="Customer" Type="DBModal.Store.Customer" Multiplicity="*" />
+    <End Role="User" Type="NetworkModel.Store.User" Multiplicity="1" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="UserID" />
@@ -155,8 +155,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CustomerComission_CustomerComission">
-    <End Role="Customer" Type="DBModal.Store.Customer" Multiplicity="1" />
-    <End Role="CustomerComission" Type="DBModal.Store.CustomerComission" Multiplicity="*" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="1" />
+    <End Role="CustomerComission" Type="NetworkModel.Store.CustomerComission" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="MembershipID" />
@@ -167,8 +167,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CustomerComission_Order">
-    <End Role="Customer" Type="DBModal.Store.Customer" Multiplicity="1" />
-    <End Role="CustomerComission" Type="DBModal.Store.CustomerComission" Multiplicity="*" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="1" />
+    <End Role="CustomerComission" Type="NetworkModel.Store.CustomerComission" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="MembershipID" />
@@ -179,8 +179,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Order_Customer">
-    <End Role="Customer" Type="DBModal.Store.Customer" Multiplicity="1" />
-    <End Role="Order" Type="DBModal.Store.Order" Multiplicity="*" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="1" />
+    <End Role="Order" Type="NetworkModel.Store.Order" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Customer">
         <PropertyRef Name="MembershipID" />

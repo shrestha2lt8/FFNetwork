@@ -114,6 +114,7 @@
             this.Name = "frmTax";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FF: Tax";
+            this.Load += new System.EventHandler(this.frmTax_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="DBModalStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="NetworkModelStoreContainer" CdmEntityContainer="NetworkEntities">
     <EntitySetMapping Name="Areas">
-      <EntityTypeMapping TypeName="DBModal.Area">
+      <EntityTypeMapping TypeName="NetworkModel.Area">
         <MappingFragment StoreEntitySet="Area">
           <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
           <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Bonus">
-      <EntityTypeMapping TypeName="DBModal.Bonu">
+      <EntityTypeMapping TypeName="NetworkModel.Bonu">
         <MappingFragment StoreEntitySet="Bonus">
           <ScalarProperty Name="BonousPaidID" ColumnName="BonousPaidID" />
           <ScalarProperty Name="BonousPaidDate" ColumnName="BonousPaidDate" />
@@ -21,7 +21,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ComissionSettings">
-      <EntityTypeMapping TypeName="DBModal.ComissionSetting">
+      <EntityTypeMapping TypeName="NetworkModel.ComissionSetting">
         <MappingFragment StoreEntitySet="ComissionSetting">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
@@ -31,7 +31,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="DBModal.Customer">
+      <EntityTypeMapping TypeName="NetworkModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
           <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
@@ -63,7 +63,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CustomerComissions">
-      <EntityTypeMapping TypeName="DBModal.CustomerComission">
+      <EntityTypeMapping TypeName="NetworkModel.CustomerComission">
         <MappingFragment StoreEntitySet="CustomerComission">
           <ScalarProperty Name="ComissionID" ColumnName="ComissionID" />
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
@@ -75,7 +75,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="DBModal.Order">
+      <EntityTypeMapping TypeName="NetworkModel.Order">
         <MappingFragment StoreEntitySet="Order">
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
@@ -87,7 +87,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TaxSettings">
-      <EntityTypeMapping TypeName="DBModal.TaxSetting">
+      <EntityTypeMapping TypeName="NetworkModel.TaxSetting">
         <MappingFragment StoreEntitySet="TaxSetting">
           <ScalarProperty Name="TaxID" ColumnName="TaxID" />
           <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
@@ -95,7 +95,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="DBModal.User">
+      <EntityTypeMapping TypeName="NetworkModel.User">
         <MappingFragment StoreEntitySet="User">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />

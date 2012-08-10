@@ -18,11 +18,11 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("DBModal", "FK_Customer_Area", "Area", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Area), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Customer), true)]
-[assembly: EdmRelationshipAttribute("DBModal", "FK_Customer_User", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.User), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Customer), true)]
-[assembly: EdmRelationshipAttribute("DBModal", "FK_CustomerComission_CustomerComission", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
-[assembly: EdmRelationshipAttribute("DBModal", "FK_CustomerComission_Order", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
-[assembly: EdmRelationshipAttribute("DBModal", "FK_Order_Customer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Order), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_Customer_Area", "Area", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Area), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Customer), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_Customer_User", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.User), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Customer), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_CustomerComission_CustomerComission", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_CustomerComission_Order", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_Order_Customer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Order), true)]
 
 #endregion
 
@@ -33,32 +33,32 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    public partial class Entities : ObjectContext
+    public partial class NetworkEntities : ObjectContext
     {
         #region Constructors
     
         /// <summary>
-        /// Initializes a new Entities object using the connection string found in the 'Entities' section of the application configuration file.
+        /// Initializes a new NetworkEntities object using the connection string found in the 'NetworkEntities' section of the application configuration file.
         /// </summary>
-        public Entities() : base("name=Entities", "Entities")
+        public NetworkEntities() : base("name=NetworkEntities", "NetworkEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new Entities object.
+        /// Initialize a new NetworkEntities object.
         /// </summary>
-        public Entities(string connectionString) : base(connectionString, "Entities")
+        public NetworkEntities(string connectionString) : base(connectionString, "NetworkEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
         }
     
         /// <summary>
-        /// Initialize a new Entities object.
+        /// Initialize a new NetworkEntities object.
         /// </summary>
-        public Entities(EntityConnection connection) : base(connection, "Entities")
+        public NetworkEntities(EntityConnection connection) : base(connection, "NetworkEntities")
         {
             this.ContextOptions.LazyLoadingEnabled = true;
             OnContextCreated();
@@ -280,7 +280,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="Area")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="Area")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Area : EntityObject
@@ -362,18 +362,18 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Customer_Area", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_Area", "Customer")]
         public EntityCollection<Customer> Customers
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("DBModal.FK_Customer_Area", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("NetworkModel.FK_Customer_Area", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("DBModal.FK_Customer_Area", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("NetworkModel.FK_Customer_Area", "Customer", value);
                 }
             }
         }
@@ -384,7 +384,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="Bonu")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="Bonu")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Bonu : EntityObject
@@ -543,7 +543,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="ComissionSetting")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="ComissionSetting")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class ComissionSetting : EntityObject
@@ -676,7 +676,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="Customer")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="Customer")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Customer : EntityObject
@@ -1366,16 +1366,16 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Customer_Area", "Area")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_Area", "Area")]
         public Area Area
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("DBModal.FK_Customer_Area", "Area").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("NetworkModel.FK_Customer_Area", "Area").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("DBModal.FK_Customer_Area", "Area").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("NetworkModel.FK_Customer_Area", "Area").Value = value;
             }
         }
         /// <summary>
@@ -1387,13 +1387,13 @@ namespace FFModal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("DBModal.FK_Customer_Area", "Area");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Area>("NetworkModel.FK_Customer_Area", "Area");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Area>("DBModal.FK_Customer_Area", "Area", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Area>("NetworkModel.FK_Customer_Area", "Area", value);
                 }
             }
         }
@@ -1404,16 +1404,16 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Customer_User", "User")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_User", "User")]
         public User User
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DBModal.FK_Customer_User", "User").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("NetworkModel.FK_Customer_User", "User").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DBModal.FK_Customer_User", "User").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("NetworkModel.FK_Customer_User", "User").Value = value;
             }
         }
         /// <summary>
@@ -1425,13 +1425,13 @@ namespace FFModal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("DBModal.FK_Customer_User", "User");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<User>("NetworkModel.FK_Customer_User", "User");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("DBModal.FK_Customer_User", "User", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<User>("NetworkModel.FK_Customer_User", "User", value);
                 }
             }
         }
@@ -1442,18 +1442,18 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_CustomerComission_CustomerComission", "CustomerComission")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_CustomerComission_CustomerComission", "CustomerComission")]
         public EntityCollection<CustomerComission> CustomerComissions
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerComission>("DBModal.FK_CustomerComission_CustomerComission", "CustomerComission");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerComission>("NetworkModel.FK_CustomerComission_CustomerComission", "CustomerComission");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerComission>("DBModal.FK_CustomerComission_CustomerComission", "CustomerComission", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerComission>("NetworkModel.FK_CustomerComission_CustomerComission", "CustomerComission", value);
                 }
             }
         }
@@ -1464,18 +1464,18 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_CustomerComission_Order", "CustomerComission")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_CustomerComission_Order", "CustomerComission")]
         public EntityCollection<CustomerComission> CustomerComissions1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerComission>("DBModal.FK_CustomerComission_Order", "CustomerComission");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<CustomerComission>("NetworkModel.FK_CustomerComission_Order", "CustomerComission");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerComission>("DBModal.FK_CustomerComission_Order", "CustomerComission", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<CustomerComission>("NetworkModel.FK_CustomerComission_Order", "CustomerComission", value);
                 }
             }
         }
@@ -1486,18 +1486,18 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Order_Customer", "Order")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Order_Customer", "Order")]
         public EntityCollection<Order> Orders
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("DBModal.FK_Order_Customer", "Order");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Order>("NetworkModel.FK_Order_Customer", "Order");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("DBModal.FK_Order_Customer", "Order", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("NetworkModel.FK_Order_Customer", "Order", value);
                 }
             }
         }
@@ -1508,7 +1508,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="CustomerComission")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="CustomerComission")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class CustomerComission : EntityObject
@@ -1696,16 +1696,16 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_CustomerComission_CustomerComission", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_CustomerComission_CustomerComission", "Customer")]
         public Customer Customer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_CustomerComission", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_CustomerComission", "Customer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_CustomerComission", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_CustomerComission", "Customer").Value = value;
             }
         }
         /// <summary>
@@ -1717,13 +1717,13 @@ namespace FFModal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_CustomerComission", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_CustomerComission", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("DBModal.FK_CustomerComission_CustomerComission", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("NetworkModel.FK_CustomerComission_CustomerComission", "Customer", value);
                 }
             }
         }
@@ -1734,16 +1734,16 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_CustomerComission_Order", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_CustomerComission_Order", "Customer")]
         public Customer Customer1
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_Order", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_Order", "Customer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_Order", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_Order", "Customer").Value = value;
             }
         }
         /// <summary>
@@ -1755,13 +1755,13 @@ namespace FFModal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_CustomerComission_Order", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_CustomerComission_Order", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("DBModal.FK_CustomerComission_Order", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("NetworkModel.FK_CustomerComission_Order", "Customer", value);
                 }
             }
         }
@@ -1772,7 +1772,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="Order")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="Order")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class Order : EntityObject
@@ -1960,16 +1960,16 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Order_Customer", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Order_Customer", "Customer")]
         public Customer Customer
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_Order_Customer", "Customer").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_Order_Customer", "Customer").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_Order_Customer", "Customer").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_Order_Customer", "Customer").Value = value;
             }
         }
         /// <summary>
@@ -1981,13 +1981,13 @@ namespace FFModal
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("DBModal.FK_Order_Customer", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Customer>("NetworkModel.FK_Order_Customer", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("DBModal.FK_Order_Customer", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Customer>("NetworkModel.FK_Order_Customer", "Customer", value);
                 }
             }
         }
@@ -1998,7 +1998,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="TaxSetting")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="TaxSetting")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class TaxSetting : EntityObject
@@ -2079,7 +2079,7 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DBModal", Name="User")]
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="User")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
     public partial class User : EntityObject
@@ -2345,18 +2345,18 @@ namespace FFModal
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("DBModal", "FK_Customer_User", "Customer")]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_User", "Customer")]
         public EntityCollection<Customer> Customers
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("DBModal.FK_Customer_User", "Customer");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("NetworkModel.FK_Customer_User", "Customer");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("DBModal.FK_Customer_User", "Customer", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("NetworkModel.FK_Customer_User", "Customer", value);
                 }
             }
         }

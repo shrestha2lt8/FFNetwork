@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CustomerController.cs" />
+    <Compile Include="Controller\TaxController.cs" />
     <Compile Include="DBModal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

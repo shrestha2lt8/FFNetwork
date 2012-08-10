@@ -40,7 +40,7 @@ namespace FFModal.Controller
       /// <returns></returns>
        public static bool Add(String pMembershipID,String pIntroducerID,String pReferenceID,String pCustomerName,String pBenificiaryName,String pGender,DateTime pDateOfBirth,DateTime pCreatedDate,Int32 pCreatedBy,String pMaratialStatus,String pNationality,String  pCitizenshipID,String  pLicenseID,String pPassportID,String pCountry,String pCity,String pMunicipality,String pDistrict, String pStreet,String pHomeNumber,String pAreaCode,String pAddress,String pHomeTelephone,String pMobile,String pEmailAddress,Byte[] pPhoto)
        {
-           using (Entities context = new Entities())
+           using (NetworkEntities context = new NetworkEntities())
            {
                FFModal.Customer objCustomer = new FFModal.Customer();
                         objCustomer.MembershipID = pMembershipID;
@@ -106,7 +106,7 @@ namespace FFModal.Controller
       /// <returns></returns>
        public static bool Edit(String pMembershipID,String pIntroducerID,String pReferenceID,String pCustomerName,String pBenificiaryName,String pGender,DateTime pDateOfBirth,DateTime pCreatedDate,Int32 pCreatedBy,String pMaratialStatus,String pNationality,String  pCitizenshipID,String  pLicenseID,String pPassportID,String pCountry,String pCity,String pMunicipality,String pDistrict, String pStreet,String pHomeNumber,String pAreaCode,String pAddress,String pHomeTelephone,String pMobile,String pEmailAddress,Byte[] pPhoto)
        {
-           using (Entities context = new Entities())
+           using (NetworkEntities context = new NetworkEntities())
            {
                FFModal.Customer objCustomer =context.Customers.FirstOrDefault(x=>x.MembershipID==pMembershipID);
                if (objCustomer != null)
@@ -149,7 +149,7 @@ namespace FFModal.Controller
       /// <returns></returns>
        public static bool Delete(String pMembershipID)
        {
-           using (Entities context = new Entities())
+           using (NetworkEntities context = new NetworkEntities())
            {
                FFModal.Customer objCustomer = context.Customers.FirstOrDefault(x => x.MembershipID == pMembershipID);
                if (objCustomer != null)
@@ -168,7 +168,7 @@ namespace FFModal.Controller
       /// <returns></returns>
        public static Customer GetCustomer(String pMembershipId)
        {
-           using (Entities context = new Entities())
+           using (NetworkEntities context = new NetworkEntities())
            {
                return context.Customers.SingleOrDefault(x => x.MembershipID == pMembershipId);
            }
@@ -181,7 +181,7 @@ namespace FFModal.Controller
       /// <returns></returns>
        public static List<Customer> GetAll(String pMembershipId)
        {
-           using (Entities context = new Entities())
+           using (NetworkEntities context = new NetworkEntities())
            {
                return context.Customers.ToList();
            }
