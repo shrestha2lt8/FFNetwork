@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ComissionSettingController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
     <Compile Include="Controller\TaxController.cs" />
     <Compile Include="DBModal.Designer.cs">

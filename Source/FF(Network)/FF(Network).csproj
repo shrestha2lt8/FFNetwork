@@ -49,11 +49,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Utility.cs" />
     <Compile Include="frmAbout.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAbout.Designer.cs">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmComission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmComission.Designer.cs">
+      <DependentUpon>frmComission.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLookup.cs">
       <SubType>Form</SubType>
@@ -77,6 +84,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAbout.resx">
       <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmComission.resx">
+      <DependentUpon>frmComission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLookup.resx">
       <DependentUpon>frmLookup.cs</DependentUpon>
@@ -107,9 +117,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Code\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FFModal\FFModal\FFModal.csproj">
       <Project>{72721AEA-398C-4F74-AC97-449ABA0DE7DD}</Project>

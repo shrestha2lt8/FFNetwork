@@ -29,7 +29,8 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void commisionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmComission frmComission = new frmComission();
+            frmComission.ShowDialog();
         }
 
         /// <summary>

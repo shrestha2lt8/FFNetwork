@@ -26,3 +26,4 @@ D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\FF_Ne
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\GenerateResource.read.1.tlog
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\bin\Debug\FF(Network).exe.config
+D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\FF_Network_.frmComission.resources
