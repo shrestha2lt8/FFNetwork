@@ -74,13 +74,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.loginToolStripMenuItem.Text = "Login";
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click_1);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             // 
             // masterToolStripMenuItem
@@ -144,14 +145,14 @@
             // taxToolStripMenuItem
             // 
             this.taxToolStripMenuItem.Name = "taxToolStripMenuItem";
-            this.taxToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.taxToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.taxToolStripMenuItem.Text = "Tax";
             this.taxToolStripMenuItem.Click += new System.EventHandler(this.taxToolStripMenuItem_Click);
             // 
             // commisionToolStripMenuItem
             // 
             this.commisionToolStripMenuItem.Name = "commisionToolStripMenuItem";
-            this.commisionToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.commisionToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
             this.commisionToolStripMenuItem.Text = "Comission";
             this.commisionToolStripMenuItem.Click += new System.EventHandler(this.commisionToolStripMenuItem_Click);
             // 
@@ -181,6 +182,7 @@
             this.Name = "frmMain";
             this.Text = "Main";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

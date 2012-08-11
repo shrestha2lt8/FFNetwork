@@ -12,6 +12,7 @@ namespace FF_Network_
 {
     public partial class frmMain : Form
     {
+
         public frmMain()
         {
             InitializeComponent();
@@ -53,6 +54,23 @@ namespace FF_Network_
         {
             frmTax frmTax = new frmTax();
             frmTax.ShowDialog();
+        }
+
+        /// <summary>
+        /// Main form load event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.ShowDialog();
+        }
+
+        private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            frmLogin frmLogin = new frmLogin();
+            frmLogin.ShowDialog();
         }
     }
 }

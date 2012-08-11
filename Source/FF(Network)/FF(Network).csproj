@@ -62,6 +62,12 @@
     <Compile Include="frmComission.Designer.cs">
       <DependentUpon>frmComission.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLookup.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmComission.resx">
       <DependentUpon>frmComission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLookup.resx">
       <DependentUpon>frmLookup.cs</DependentUpon>
@@ -117,7 +126,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\login.jpg" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FFModal\FFModal\FFModal.csproj">
       <Project>{72721AEA-398C-4F74-AC97-449ABA0DE7DD}</Project>
