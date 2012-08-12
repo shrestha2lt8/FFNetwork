@@ -23,11 +23,21 @@ namespace FF_Network_
 
         }
 
+        /// <summary>
+        /// Cancel button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Login button click event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if (UserController.GetUser(txtUser.Text, txtPassword.Text) == null)
@@ -41,6 +51,11 @@ namespace FF_Network_
             }
         }
 
+        /// <summary>
+        /// Keydown event of  login form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void frmLogin_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Escape)
