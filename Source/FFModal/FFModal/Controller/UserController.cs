@@ -7,11 +7,13 @@ namespace FFModal.Controller
 {
    public class UserController
     {
-        /// <summary>
-        /// Get Tax setting 
-        /// </summary>
-        /// <param name="pMembershipId"></param>
-        /// <returns></returns>
+
+       /// <summary>
+       /// Get user by username and password
+       /// </summary>
+       /// <param name="pUserName"></param>
+       /// <param name="pPassword"></param>
+       /// <returns></returns>
         public static User GetUser(string pUserName,string pPassword )
         {
             using (NetworkEntities context = new NetworkEntities())

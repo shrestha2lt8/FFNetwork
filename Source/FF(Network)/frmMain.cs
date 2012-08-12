@@ -63,14 +63,38 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void frmMain_Load(object sender, EventArgs e)
         {
+            enableMenus(false);
             frmLogin frmLogin = new frmLogin();
             frmLogin.ShowDialog();
+            if (frmLogin.success == true)
+                enableMenus(true);
         }
 
         private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             frmLogin frmLogin = new frmLogin();
             frmLogin.ShowDialog();
+            if (frmLogin.success == true)
+                enableMenus(true);
+        }
+
+        public void enableMenus(bool pState )
+        {
+
+            loginToolStripMenuItem.Enabled =! pState;
+            logoutToolStripMenuItem.Enabled = pState;
+            customerToolStripMenuItem.Enabled = pState;
+            orderToolStripMenuItem.Enabled = pState;
+            taxToolStripMenuItem.Enabled = pState;
+            commisionToolStripMenuItem.Enabled = pState;
+            customerHierarchyToolStripMenuItem.Enabled = pState;
+            orderReportToolStripMenuItem.Enabled = pState;
+            areaToolStripMenuItem.Enabled = pState;
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            enableMenus(false);
         }
     }
 }

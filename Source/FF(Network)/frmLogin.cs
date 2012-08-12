@@ -12,6 +12,7 @@ namespace FF_Network_
 {
     public partial class frmLogin : Form
     {
+        public bool success = false;
         public frmLogin()
         {
             InitializeComponent();
@@ -34,6 +35,15 @@ namespace FF_Network_
                 MessageBox.Show("Invalid login detail !!", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
+            {
+                success = true;
+                this.Close();
+            }
+        }
+
+        private void frmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
             {
                 this.Close();
             }
