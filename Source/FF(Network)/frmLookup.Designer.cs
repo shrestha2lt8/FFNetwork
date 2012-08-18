@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.rectangleShape1 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
+            this.dgvLookup = new System.Windows.Forms.DataGridView();
             this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLookup)).BeginInit();
             this.SuspendLayout();
             // 
             // shapeContainer1
@@ -49,13 +49,6 @@
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
-            // rectangleShape1
-            // 
-            this.rectangleShape1.CornerRadius = 5;
-            this.rectangleShape1.Location = new System.Drawing.Point(18, 347);
-            this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(636, 44);
-            // 
             // rectangleShape2
             // 
             this.rectangleShape2.CornerRadius = 5;
@@ -63,13 +56,20 @@
             this.rectangleShape2.Name = "rectangleShape2";
             this.rectangleShape2.Size = new System.Drawing.Size(636, 329);
             // 
-            // dataGridView1
+            // rectangleShape1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(28, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(614, 307);
-            this.dataGridView1.TabIndex = 2;
+            this.rectangleShape1.CornerRadius = 5;
+            this.rectangleShape1.Location = new System.Drawing.Point(18, 347);
+            this.rectangleShape1.Name = "rectangleShape1";
+            this.rectangleShape1.Size = new System.Drawing.Size(636, 44);
+            // 
+            // dgvLookup
+            // 
+            this.dgvLookup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLookup.Location = new System.Drawing.Point(28, 22);
+            this.dgvLookup.Name = "dgvLookup";
+            this.dgvLookup.Size = new System.Drawing.Size(614, 307);
+            this.dgvLookup.TabIndex = 2;
             // 
             // btnOk
             // 
@@ -80,6 +80,7 @@
             this.btnOk.TabIndex = 3;
             this.btnOk.Text = "&Ok";
             this.btnOk.UseVisualStyleBackColor = true;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // btnCancel
             // 
@@ -90,6 +91,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmLookup
             // 
@@ -98,14 +100,15 @@
             this.ClientSize = new System.Drawing.Size(668, 401);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvLookup);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLookup";
             this.Text = "frmLookup";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.frmLookup_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLookup)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,7 +118,7 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvLookup;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
     }

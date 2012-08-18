@@ -96,5 +96,11 @@ namespace FF_Network_
         {
             enableMenus(false);
         }
+
+        private void areaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmArea frmArea = new frmArea();
+            frmArea.ShowDialog();
+        }
     }
 }
