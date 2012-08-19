@@ -29,13 +29,21 @@ namespace FF_Network_
         {
             if (lookupType == LookupType.Area)
             {
-                dgvLookup.Columns.Add("AreaCode", "Code");
-                dgvLookup.Columns.Add("AreaDescription", "Name");
                 dgvLookup.AutoGenerateColumns = false;
+                DataGridViewTextBoxColumn makeColumn = new DataGridViewTextBoxColumn();
+                makeColumn.DataPropertyName = "AreaCode";
+                makeColumn.HeaderText = "Code";
+                dgvLookup.Columns.Add(makeColumn);
+
+                DataGridViewTextBoxColumn modelColumn = new DataGridViewTextBoxColumn();
+                modelColumn.DataPropertyName = "AreaDescription";
+                modelColumn.HeaderText = "Name";
+                dgvLookup.Columns.Add(makeColumn);
                 dgvLookup.DataSource = AreaController.GetAll();
             }
             else if (lookupType == LookupType.Customer)
             {
+
             }
             else if (lookupType == LookupType.Product)
             {
