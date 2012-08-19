@@ -38,7 +38,7 @@ namespace FF_Network_
                 DataGridViewTextBoxColumn modelColumn = new DataGridViewTextBoxColumn();
                 modelColumn.DataPropertyName = "AreaDescription";
                 modelColumn.HeaderText = "Name";
-                dgvLookup.Columns.Add(makeColumn);
+                dgvLookup.Columns.Add(modelColumn);
                 dgvLookup.DataSource = AreaController.GetAll();
             }
             else if (lookupType == LookupType.Customer)

@@ -65,7 +65,10 @@
             // 
             // dgvLookup
             // 
+            this.dgvLookup.AllowUserToAddRows = false;
+            this.dgvLookup.AllowUserToDeleteRows = false;
             this.dgvLookup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLookup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvLookup.Location = new System.Drawing.Point(28, 22);
             this.dgvLookup.Name = "dgvLookup";
             this.dgvLookup.Size = new System.Drawing.Size(614, 307);
@@ -77,7 +80,7 @@
             this.btnOk.Location = new System.Drawing.Point(230, 352);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 36);
-            this.btnOk.TabIndex = 3;
+            this.btnOk.TabIndex = 0;
             this.btnOk.Text = "&Ok";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -88,7 +91,7 @@
             this.btnCancel.Location = new System.Drawing.Point(334, 352);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 36);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);

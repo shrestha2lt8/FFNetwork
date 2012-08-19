@@ -37,6 +37,8 @@ namespace FF_Network_
             txtAreaCode.Enabled = pState;
             btnDump.Enabled = pState;
             txtAreaName.Enabled = pState;
+            btnOk.Enabled = pState;
+            btnCancel.Enabled = pState;
         }
 
         /// <summary>
@@ -70,10 +72,10 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            this.Tag = "Edit";
             clearControls();
             entryControlStatus(true);
             buttonStatus(false);
+            this.Tag = "Edit";
         }
 
         /// <summary>
@@ -105,8 +107,9 @@ namespace FF_Network_
             frmLookup frmLookup = new frmLookup();
             frmLookup.lookupType =  LookupType.Area;
             frmLookup.ShowDialog();
-            txtAreaCode.Text = txtAreaCode.Text;
-            txtAreaName.Text = txtAreaName.Text;
+            txtAreaCode.Text = frmLookup.returnField1;
+            txtAreaName.Text = frmLookup.returnField2;
+            txtAreaCode.Focus();
         }
 
         /// <summary>
@@ -181,6 +184,52 @@ namespace FF_Network_
             this.Tag = "Nav";
             entryControlStatus(false);
             buttonStatus(true);
+        }
+
+        /// <summary>
+        /// Validation of Area code for edit mode
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtAreaCode_Validating(object sender, CancelEventArgs e)
+        {
+            if (this.Tag.ToString() == "Edit")
+            {
+                if (txtAreaCode.Text.Trim()!="")
+                {
+                if (AreaController.GetAreaByCode(txtAreaCode.Text) == null)
+                {
+                    MessageBox.Show("Area code does not exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    e.Cancel = true;
+                }
+                }
+            }
+            
+        }
+
+        /// <summary>
+        /// Keydown event of  area form
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmArea_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
+        }
+
+        private void frmArea_Load(object sender, EventArgs e)
+        {
+            this.Tag = "Nav";
+            entryControlStatus(false);
+            buttonStatus(true);
+        }
+
+        private void frmArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }
