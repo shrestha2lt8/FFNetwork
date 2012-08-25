@@ -22,4 +22,14 @@ namespace FFNetwork
         }
     }
 
+    /// <summary>
+    /// Enum type for lookup
+    /// </summary>
+     public enum LookupType
+      {
+          Area,
+          Customer,
+          Product     
+      }
+
 }
