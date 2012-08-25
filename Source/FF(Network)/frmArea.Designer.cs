@@ -128,6 +128,7 @@
             this.txtAreaCode.Name = "txtAreaCode";
             this.txtAreaCode.Size = new System.Drawing.Size(104, 20);
             this.txtAreaCode.TabIndex = 7;
+            this.txtAreaCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAreaCode_KeyDown);
             this.txtAreaCode.Validating += new System.ComponentModel.CancelEventHandler(this.txtAreaCode_Validating);
             // 
             // txtAreaName
@@ -136,6 +137,7 @@
             this.txtAreaName.Name = "txtAreaName";
             this.txtAreaName.Size = new System.Drawing.Size(195, 20);
             this.txtAreaName.TabIndex = 9;
+            this.txtAreaName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAreaName_KeyDown);
             // 
             // lblAreaName
             // 

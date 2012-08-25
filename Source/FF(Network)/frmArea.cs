@@ -266,6 +266,32 @@ namespace FF_Network_
             navigation(pCurrentRow);
         }
 
+        /// <summary>
+        /// Keydown event for txtAreaCode textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtAreaCode_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                btnCancel_Click(null, null);
+            else if (e.KeyCode == Keys.F1)
+                btnDump_Click(null, null);
+
+
+        }
+
+        /// <summary>
+        /// Keydown event for txtAreaName textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtAreaName_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                btnCancel_Click(null, null);
+        }
+
         #endregion
 
         #region "Custom Methods"
@@ -324,5 +350,6 @@ namespace FF_Network_
             }
         }
         #endregion
+
     }
 }
