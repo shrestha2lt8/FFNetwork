@@ -7,50 +7,55 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FFModal.Controller;
+using FFModal;
 using FFNetwork;
 namespace FF_Network_
 {
     public partial class frmArea : Form
     {
+        List<Area> lstArea;
+        int pCurrentRow = 0;
         public frmArea()
         {
             InitializeComponent();
         }
 
+        #region "Form Event"
+
         /// <summary>
-        /// Add,Edit ,Delete and Ok and cancel button status
+        /// Keydown event of  area form
         /// </summary>
-        /// <param name="pState"></param>
-        private void buttonStatus(bool pState)
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmArea_KeyDown(object sender, KeyEventArgs e)
         {
-            btnAdd.Enabled = pState;
-            btnEdit.Enabled = pState;
-            btnDelete.Enabled = pState;
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
 
         /// <summary>
-        /// Textbox control status
+        /// Form load event
         /// </summary>
-        /// <param name="pState"></param>
-        private void entryControlStatus(bool pState)
-        {
-            txtAreaCode.Enabled = pState;
-            btnDump.Enabled = pState;
-            txtAreaName.Enabled = pState;
-            btnOk.Enabled = pState;
-            btnCancel.Enabled = pState;
-        }
-
-        /// <summary>
-        /// ClearControls
-        /// </summary>
-        /// <param name="pState"></param>
-        private void clearControls()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmArea_Load(object sender, EventArgs e)
         {
             this.Tag = "Nav";
-            txtAreaCode.Text = "";
-            txtAreaName.Text = "";
+            entryControlStatus(false);
+            buttonStatus(true);
+            lstArea = AreaController.GetAll();
         }
+
+        private void frmArea_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        #region "Control Event"
 
         /// <summary>
         /// Add button click event
@@ -208,28 +213,116 @@ namespace FF_Network_
         }
 
         /// <summary>
-        /// Keydown event of  area form
+        /// Navivation button click event(First)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void frmArea_KeyDown(object sender, KeyEventArgs e)
+        private void btnFirst_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Escape)
+            pCurrentRow = 0;
+            navigation(pCurrentRow);
+        }
+
+        /// <summary>
+        /// Navigation button click event(Previous)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            if( pCurrentRow>0)
             {
-                this.Close();
+                pCurrentRow=pCurrentRow-1;
+                navigation(pCurrentRow);
             }
         }
 
-        private void frmArea_Load(object sender, EventArgs e)
+        /// <summary>
+        /// Navigation button click event(Next)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            pCurrentRow = pCurrentRow + 1;
+            if (pCurrentRow < lstArea.Count)
+            {
+                navigation(pCurrentRow);
+            }
+            else
+            {
+                pCurrentRow = pCurrentRow - 1;
+            }
+        }
+
+        /// <summary>
+        /// Navigation button click event(Last)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+            pCurrentRow = lstArea.Count-1;
+            navigation(pCurrentRow);
+        }
+
+        #endregion
+
+        #region "Custom Methods"
+        /// <summary>
+        /// Add,Edit ,Delete and Ok and cancel button status
+        /// </summary>
+        /// <param name="pState"></param>
+        private void buttonStatus(bool pState)
+        {
+            btnAdd.Enabled = pState;
+            btnEdit.Enabled = pState;
+            btnDelete.Enabled = pState;
+            btnFirst.Enabled = pState;
+            btnLast.Enabled = pState;
+            btnPrevious.Enabled = pState;
+            btnNext.Enabled = pState;
+        }
+
+        /// <summary>
+        /// Textbox control status
+        /// </summary>
+        /// <param name="pState"></param>
+        private void entryControlStatus(bool pState)
+        {
+            txtAreaCode.Enabled = pState;
+            btnDump.Enabled = pState;
+            txtAreaName.Enabled = pState;
+            btnOk.Enabled = pState;
+            btnCancel.Enabled = pState;
+        }
+
+        /// <summary>
+        /// ClearControls
+        /// </summary>
+        /// <param name="pState"></param>
+        private void clearControls()
         {
             this.Tag = "Nav";
-            entryControlStatus(false);
-            buttonStatus(true);
+            txtAreaCode.Text = "";
+            txtAreaName.Text = "";
         }
 
-        private void frmArea_KeyPress(object sender, KeyPressEventArgs e)
+        private void navigation(int pRowIndex)
         {
-
+            if (lstArea.Count > 0)
+            {
+                if (pRowIndex >= 0 && pRowIndex < lstArea.Count)
+                {
+                    txtAreaCode.Text = lstArea[pRowIndex].AreaCode;
+                    txtAreaName.Text = lstArea[pRowIndex].AreaDescription;
+                }
+            }
+            else
+            {
+                MessageBox.Show("No records are available.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
+        #endregion
     }
 }
