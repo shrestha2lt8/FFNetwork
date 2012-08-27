@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NetworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NetworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NetworkModelStoreContainer">
           <EntitySet Name="Area" EntityType="NetworkModel.Store.Area" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Bonus" EntityType="NetworkModel.Store.Bonus" store:Type="Tables" Schema="dbo" />
@@ -109,10 +109,12 @@
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="IsDelivered" Type="bit" Nullable="false" />
-          <Property Name="DeliveredDate" Type="datetime" Nullable="false" />
+          <Property Name="DeliveredDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="TaxSetting">
           <Key>
@@ -195,8 +197,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NetworkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -317,6 +318,8 @@
           <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
           <Property Name="DeliveredDate" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+          <Property Type="String" Name="Remarks" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TaxSetting">
           <Key>
@@ -460,7 +463,9 @@
             <ScalarProperty Name="IsComissionPaid" ColumnName="IsComissionPaid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="NetworkModel.Order"><MappingFragment StoreEntitySet="Order">
-            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
             <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
             <ScalarProperty Name="Description" ColumnName="Description" />
             <ScalarProperty Name="Amount" ColumnName="Amount" />

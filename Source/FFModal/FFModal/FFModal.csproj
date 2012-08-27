@@ -46,6 +46,7 @@
     <Compile Include="Controller\AreaController.cs" />
     <Compile Include="Controller\ComissionSettingController.cs" />
     <Compile Include="Controller\CustomerController.cs" />
+    <Compile Include="Controller\OrderController.cs" />
     <Compile Include="Controller\TaxController.cs" />
     <Compile Include="Controller\UserController.cs" />
     <Compile Include="DBModal.Designer.cs">

@@ -10,3 +10,9 @@ D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FFModal\FFModal\bin\Debug\FFMod
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FFModal\FFModal\obj\Debug\ResolveAssemblyReference.cache
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FFModal\FFModal\obj\Debug\FFModal.dll
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FFModal\FFModal\obj\Debug\FFModal.pdb
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\obj\Debug\FFModal.dll
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\obj\Debug\FFModal.pdb
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\bin\Debug\FFModal.dll.config
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\bin\Debug\FFModal.dll
+D:\Projects\FFSolution\FFNetwork\Source\FFModal\FFModal\bin\Debug\FFModal.pdb

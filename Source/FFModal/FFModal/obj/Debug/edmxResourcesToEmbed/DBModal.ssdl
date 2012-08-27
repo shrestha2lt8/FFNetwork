@@ -104,10 +104,12 @@
     </Key>
     <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
-    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1024" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
     <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IsDelivered" Type="bit" Nullable="false" />
-    <Property Name="DeliveredDate" Type="datetime" Nullable="false" />
+    <Property Name="DeliveredDate" Type="datetime" />
+    <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+    <Property Name="Remarks" Type="nvarchar" MaxLength="1024" />
   </EntityType>
   <EntityType Name="TaxSetting">
     <Key>

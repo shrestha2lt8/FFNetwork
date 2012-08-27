@@ -43,7 +43,17 @@ namespace FF_Network_
             }
             else if (lookupType == LookupType.Customer)
             {
+                dgvLookup.AutoGenerateColumns = false;
+                DataGridViewTextBoxColumn makeColumn = new DataGridViewTextBoxColumn();
+                makeColumn.DataPropertyName = "MembershipID";
+                makeColumn.HeaderText = "Membership ID";
+                dgvLookup.Columns.Add(makeColumn);
 
+                DataGridViewTextBoxColumn modelColumn = new DataGridViewTextBoxColumn();
+                modelColumn.DataPropertyName = "CustomerName";
+                modelColumn.HeaderText = "Name";
+                dgvLookup.Columns.Add(modelColumn);
+                dgvLookup.DataSource = CustomerController.GetAll();
             }
             else if (lookupType == LookupType.Product)
             {

@@ -1788,7 +1788,8 @@ namespace FFModal
         /// <param name="amount">Initial value of the Amount property.</param>
         /// <param name="isDelivered">Initial value of the IsDelivered property.</param>
         /// <param name="deliveredDate">Initial value of the DeliveredDate property.</param>
-        public static Order CreateOrder(global::System.Int32 orderID, global::System.String membershipID, global::System.String description, global::System.Decimal amount, global::System.Boolean isDelivered, global::System.DateTime deliveredDate)
+        /// <param name="orderDate">Initial value of the OrderDate property.</param>
+        public static Order CreateOrder(global::System.Int32 orderID, global::System.String membershipID, global::System.String description, global::System.Decimal amount, global::System.Boolean isDelivered, global::System.DateTime deliveredDate, global::System.DateTime orderDate)
         {
             Order order = new Order();
             order.OrderID = orderID;
@@ -1797,6 +1798,7 @@ namespace FFModal
             order.Amount = amount;
             order.IsDelivered = isDelivered;
             order.DeliveredDate = deliveredDate;
+            order.OrderDate = orderDate;
             return order;
         }
 
@@ -1929,9 +1931,9 @@ namespace FFModal
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime DeliveredDate
+        public Nullable<global::System.DateTime> DeliveredDate
         {
             get
             {
@@ -1946,9 +1948,57 @@ namespace FFModal
                 OnDeliveredDateChanged();
             }
         }
-        private global::System.DateTime _DeliveredDate;
-        partial void OnDeliveredDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _DeliveredDate;
+        partial void OnDeliveredDateChanging(Nullable<global::System.DateTime> value);
         partial void OnDeliveredDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime OrderDate
+        {
+            get
+            {
+                return _OrderDate;
+            }
+            set
+            {
+                OnOrderDateChanging(value);
+                ReportPropertyChanging("OrderDate");
+                _OrderDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("OrderDate");
+                OnOrderDateChanged();
+            }
+        }
+        private global::System.DateTime _OrderDate;
+        partial void OnOrderDateChanging(global::System.DateTime value);
+        partial void OnOrderDateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Remarks
+        {
+            get
+            {
+                return _Remarks;
+            }
+            set
+            {
+                OnRemarksChanging(value);
+                ReportPropertyChanging("Remarks");
+                _Remarks = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Remarks");
+                OnRemarksChanged();
+            }
+        }
+        private global::System.String _Remarks;
+        partial void OnRemarksChanging(global::System.String value);
+        partial void OnRemarksChanged();
 
         #endregion
     

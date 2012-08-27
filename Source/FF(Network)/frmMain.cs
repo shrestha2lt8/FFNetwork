@@ -102,5 +102,11 @@ namespace FF_Network_
             frmArea frmArea = new frmArea();
             frmArea.ShowDialog();
         }
+
+        private void orderToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrder frmOrder = new frmOrder();
+            frmOrder.ShowDialog();
+        }
     }
 }

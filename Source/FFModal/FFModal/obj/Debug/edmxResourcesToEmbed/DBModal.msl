@@ -77,6 +77,8 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="NetworkModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
           <ScalarProperty Name="Description" ColumnName="Description" />

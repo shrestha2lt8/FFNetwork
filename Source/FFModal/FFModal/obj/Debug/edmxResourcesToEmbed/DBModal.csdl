@@ -117,6 +117,8 @@
     <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
     <Property Name="DeliveredDate" Type="DateTime" Nullable="false" />
     <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+    <Property Type="String" Name="Remarks" MaxLength="1024" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TaxSetting">
     <Key>
