@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 namespace FFModal.Controller
 {
     public static class CustomerController
@@ -38,7 +37,11 @@ namespace FFModal.Controller
         /// <param name="pEmailAddress"></param>
         /// <param name="pPhoto"></param>
         /// <returns></returns>
-        public static bool Add(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy, String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber, String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, Byte[] pPhoto)
+        public static bool Add(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, 
+            String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy,
+            String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, 
+            String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber,
+            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
@@ -67,7 +70,11 @@ namespace FFModal.Controller
                 objCustomer.HomeTelephone = pHomeTelephone;
                 objCustomer.Mobile = pMobile;
                 objCustomer.EmailAddress = pEmailAddress;
-                objCustomer.Photo = pPhoto;
+                if (pPhoto != null)
+                {
+                    objCustomer.Photo =pPhoto;
+                }
+                objCustomer.CreatedBy = pCreatedBy;
                 context.Customers.AddObject(objCustomer);
                 context.SaveChanges();
             }
@@ -104,7 +111,11 @@ namespace FFModal.Controller
         /// <param name="pEmailAddress"></param>
         /// <param name="pPhoto"></param>
         /// <returns></returns>
-        public static bool Edit(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy, String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber, String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, Byte[] pPhoto)
+        public static bool Edit(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, 
+            String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy,
+            String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, 
+            String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber,
+            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
@@ -136,6 +147,7 @@ namespace FFModal.Controller
                     objCustomer.Mobile = pMobile;
                     objCustomer.EmailAddress = pEmailAddress;
                     objCustomer.Photo = pPhoto;
+                    objCustomer.CreatedBy = 1;
                     context.SaveChanges();
                 }
             }
@@ -179,7 +191,7 @@ namespace FFModal.Controller
         /// </summary>
         /// <param name="pMembershipId"></param>
         /// <returns></returns>
-        public static List<Customer> GetAll(String pMembershipId)
+        public static List<Customer> GetAll()
         {
             using (NetworkEntities context = new NetworkEntities())
             {
@@ -188,15 +200,28 @@ namespace FFModal.Controller
         }
 
         /// <summary>
-        /// Get all Custommers
+        /// Get next membership id
         /// </summary>
+        /// <param name="pAreaCode"></param>
         /// <returns></returns>
-        public static List<Customer> GetAll()
+        public static string GetNextMembershipId(string pAreaCode)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
-                return context.Customers.ToList();
+                double rec = 1;
+                var query = from c in context.Customers where c.MembershipID.StartsWith(pAreaCode) select c;
+
+                List<FFModal.Customer> lstCustomers = query.ToList();
+                if (lstCustomers.Count>0)
+                {
+                    return Convert.ToDouble(lstCustomers [lstCustomers.Count-1].MembershipID.Replace(pAreaCode + "-", "")).ToString("00000");
+                }
+                else
+                {
+                    return pAreaCode + "-" + rec.ToString("00000"); 
+                }
             }
+
         }
     }
 }
