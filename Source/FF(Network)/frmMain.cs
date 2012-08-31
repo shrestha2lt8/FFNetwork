@@ -108,5 +108,11 @@ namespace FF_Network_
             frmOrder frmOrder = new frmOrder();
             frmOrder.ShowDialog();
         }
+
+        private void customerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCustomer frmCustomer = new frmCustomer();
+            frmCustomer.ShowDialog();
+        }
     }
 }

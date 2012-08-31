@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using FFModal.Controller;
-
+using FFModal;
 namespace FF_Network_
 {
     public partial class frmLogin : Form
@@ -47,6 +47,7 @@ namespace FF_Network_
             else
             {
                 success = true;
+                FFNetwork.Utility.AdminUserId = UserController.GetUser(txtUser.Text, txtPassword.Text).UserID;
                 this.Close();
             }
         }
