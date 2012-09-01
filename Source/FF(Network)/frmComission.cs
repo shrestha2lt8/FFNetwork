@@ -78,5 +78,11 @@ namespace FF_Network_
                 txtPercentage.Text = objComissionSetting.ComissionPercentage.ToString();
             }
         }
+
+        private void frmComission_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
     }
 }

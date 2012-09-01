@@ -58,5 +58,11 @@ namespace FF_Network_
             }
 
         }
+
+        private void frmTax_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
+        }
     }
 }

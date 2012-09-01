@@ -302,7 +302,6 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnBrowsePhoto_Click(object sender, EventArgs e)
         {
-            
             try
             {
                 // open file dialog

@@ -68,6 +68,7 @@ namespace FF_Network_
             this.Tag = "Add";
             entryControlStatus(true);
             buttonStatus(false);
+            btnDump.Enabled = false;
         }
 
         /// <summary>
@@ -99,6 +100,9 @@ namespace FF_Network_
             else
             {
                 AreaController.Delete(txtAreaCode.Text);
+                lstArea = AreaController.GetAll();
+                pCurrentRow = 0;
+                navigation(pCurrentRow);
             }
         }
 
@@ -174,7 +178,7 @@ namespace FF_Network_
             this.Tag = "Nav";
             entryControlStatus(false);
             buttonStatus(true);
-
+            lstArea = AreaController.GetAll();
             //---------------------------------------------------------------------------------------------------------------------
             //---------------------------------------------------------------------------------------------------------------------
         }
@@ -276,9 +280,10 @@ namespace FF_Network_
             if (e.KeyCode == Keys.Escape)
                 btnCancel_Click(null, null);
             else if (e.KeyCode == Keys.F1)
+            {
+                if (this.Tag.ToString() != "Add")
                 btnDump_Click(null, null);
-
-
+            }
         }
 
         /// <summary>
@@ -308,6 +313,11 @@ namespace FF_Network_
             btnLast.Enabled = pState;
             btnPrevious.Enabled = pState;
             btnNext.Enabled = pState;
+
+            //btnFirst.Visible = false;
+            //btnLast.Visible = false;
+            //btnPrevious.Visible = false;
+            //btnNext.Visible = false;
         }
 
         /// <summary>
