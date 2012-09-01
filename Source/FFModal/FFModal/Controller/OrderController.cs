@@ -29,19 +29,19 @@ namespace FFModal.Controller
         /// <param name="pDescription">String</param>
         /// <param name="pRemarks">Remarks</param>
         /// <returns></returns>
-        public static bool Add(string pMemberID,decimal pAmount,string pDescription, string pRemarks)
+        public static bool Add(string pMemberID,decimal pAmount,string pDescription, string pRemarks,string pOrderDate)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
                 Order objOder = new Order();
                 
                 objOder.MembershipID = pMemberID;
-                objOder.OrderDate = DateTime.Now;
+                objOder.OrderDate = Convert.ToDateTime(pOrderDate);
                 objOder.Amount = pAmount;
                 objOder.IsDelivered = false;
                 objOder.Description = pDescription;
                 objOder.Remarks = pRemarks;
-                //objOder.DeliveredDate = null;
+                //objOder.DeliveredDate = ;
 
                 context.Orders.AddObject(objOder);
                 int status = context.SaveChanges();
