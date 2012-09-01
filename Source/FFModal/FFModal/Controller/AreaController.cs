@@ -85,6 +85,7 @@ namespace FFModal.Controller
                 else
                 {
                     context.Areas.DeleteObject(objArea);
+                    context.SaveChanges();
                     return true;
                 }
             }
