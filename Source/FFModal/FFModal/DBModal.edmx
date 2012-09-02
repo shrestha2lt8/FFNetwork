@@ -507,7 +507,7 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DBModal">
+      <Diagram Name="DBModal" ZoomLevel="87">
         <EntityTypeShape EntityType="NetworkModel.Area" Width="1.5" PointX="0.75" PointY="5.375" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.Bonu" Width="1.5" PointX="7.75" PointY="2.25" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.ComissionSetting" Width="1.5" PointX="7.75" PointY="5.25" Height="1.7879850260416665" IsExpanded="true" />
