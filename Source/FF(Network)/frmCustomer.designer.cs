@@ -61,7 +61,6 @@
             this.lblAreaCode = new System.Windows.Forms.Label();
             this.txtAreaCode = new System.Windows.Forms.TextBox();
             this.lblAddress = new System.Windows.Forms.Label();
-            this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblHomeTelephone = new System.Windows.Forms.Label();
             this.txtHomeTelephone = new System.Windows.Forms.TextBox();
             this.lblMobileNo = new System.Windows.Forms.Label();
@@ -87,7 +86,7 @@
             this.rectangleShape2 = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.S = new Microsoft.VisualBasic.PowerPacks.RectangleShape();
-            this.dateTimePickerCreateddate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerCreatedDate = new System.Windows.Forms.DateTimePicker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.txtPhotoPath = new System.Windows.Forms.TextBox();
             this.btnBrowsePhoto = new System.Windows.Forms.Button();
@@ -98,6 +97,8 @@
             this.lblMembershipID = new System.Windows.Forms.Label();
             this.btnMembershipID = new System.Windows.Forms.Button();
             this.txtMembershipID = new System.Windows.Forms.TextBox();
+            this.btnDump3 = new System.Windows.Forms.Button();
+            this.txtAddress = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblIntroducerID
@@ -106,32 +107,34 @@
             this.lblIntroducerID.Location = new System.Drawing.Point(36, 94);
             this.lblIntroducerID.Name = "lblIntroducerID";
             this.lblIntroducerID.Size = new System.Drawing.Size(69, 13);
-            this.lblIntroducerID.TabIndex = 2;
+            this.lblIntroducerID.TabIndex = 11;
             this.lblIntroducerID.Text = "Introducer ID";
             // 
             // txtIntroducerID
             // 
-            this.txtIntroducerID.Location = new System.Drawing.Point(223, 94);
+            this.txtIntroducerID.Location = new System.Drawing.Point(222, 94);
+            this.txtIntroducerID.MaxLength = 100;
             this.txtIntroducerID.Name = "txtIntroducerID";
             this.txtIntroducerID.Size = new System.Drawing.Size(198, 20);
-            this.txtIntroducerID.TabIndex = 3;
+            this.txtIntroducerID.TabIndex = 12;
             this.txtIntroducerID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIntroducerID_KeyDown);
             // 
             // lblReferenceID
             // 
             this.lblReferenceID.AutoSize = true;
-            this.lblReferenceID.Location = new System.Drawing.Point(34, 118);
+            this.lblReferenceID.Location = new System.Drawing.Point(36, 118);
             this.lblReferenceID.Name = "lblReferenceID";
             this.lblReferenceID.Size = new System.Drawing.Size(71, 13);
-            this.lblReferenceID.TabIndex = 4;
+            this.lblReferenceID.TabIndex = 14;
             this.lblReferenceID.Text = "Reference ID";
             // 
             // txtReferenceID
             // 
-            this.txtReferenceID.Location = new System.Drawing.Point(224, 118);
+            this.txtReferenceID.Location = new System.Drawing.Point(223, 118);
+            this.txtReferenceID.MaxLength = 100;
             this.txtReferenceID.Name = "txtReferenceID";
             this.txtReferenceID.Size = new System.Drawing.Size(197, 20);
-            this.txtReferenceID.TabIndex = 5;
+            this.txtReferenceID.TabIndex = 15;
             this.txtReferenceID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtReferenceID_KeyDown);
             // 
             // lblCustomerName
@@ -140,15 +143,16 @@
             this.lblCustomerName.Location = new System.Drawing.Point(36, 198);
             this.lblCustomerName.Name = "lblCustomerName";
             this.lblCustomerName.Size = new System.Drawing.Size(82, 13);
-            this.lblCustomerName.TabIndex = 6;
+            this.lblCustomerName.TabIndex = 20;
             this.lblCustomerName.Text = "Customer Name";
             // 
             // txtCustomerName
             // 
             this.txtCustomerName.Location = new System.Drawing.Point(222, 198);
+            this.txtCustomerName.MaxLength = 250;
             this.txtCustomerName.Name = "txtCustomerName";
             this.txtCustomerName.Size = new System.Drawing.Size(199, 20);
-            this.txtCustomerName.TabIndex = 7;
+            this.txtCustomerName.TabIndex = 21;
             // 
             // lblBenificiaryName
             // 
@@ -156,15 +160,16 @@
             this.lblBenificiaryName.Location = new System.Drawing.Point(36, 224);
             this.lblBenificiaryName.Name = "lblBenificiaryName";
             this.lblBenificiaryName.Size = new System.Drawing.Size(86, 13);
-            this.lblBenificiaryName.TabIndex = 8;
+            this.lblBenificiaryName.TabIndex = 22;
             this.lblBenificiaryName.Text = "Benificiary Name";
             // 
             // txtBenificiaryName
             // 
             this.txtBenificiaryName.Location = new System.Drawing.Point(222, 224);
+            this.txtBenificiaryName.MaxLength = 250;
             this.txtBenificiaryName.Name = "txtBenificiaryName";
             this.txtBenificiaryName.Size = new System.Drawing.Size(199, 20);
-            this.txtBenificiaryName.TabIndex = 9;
+            this.txtBenificiaryName.TabIndex = 23;
             // 
             // lblGender
             // 
@@ -172,7 +177,7 @@
             this.lblGender.Location = new System.Drawing.Point(36, 253);
             this.lblGender.Name = "lblGender";
             this.lblGender.Size = new System.Drawing.Size(42, 13);
-            this.lblGender.TabIndex = 10;
+            this.lblGender.TabIndex = 24;
             this.lblGender.Text = "Gender";
             // 
             // lblDOB
@@ -181,7 +186,7 @@
             this.lblDOB.Location = new System.Drawing.Point(36, 284);
             this.lblDOB.Name = "lblDOB";
             this.lblDOB.Size = new System.Drawing.Size(66, 13);
-            this.lblDOB.TabIndex = 12;
+            this.lblDOB.TabIndex = 26;
             this.lblDOB.Text = "Date of Birth";
             // 
             // dateTimePickerDOB
@@ -189,8 +194,8 @@
             this.dateTimePickerDOB.Location = new System.Drawing.Point(222, 284);
             this.dateTimePickerDOB.Name = "dateTimePickerDOB";
             this.dateTimePickerDOB.Size = new System.Drawing.Size(199, 20);
-            this.dateTimePickerDOB.TabIndex = 13;
-            this.dateTimePickerDOB.Value = new System.DateTime(2012, 8, 26, 21, 33, 0, 0);
+            this.dateTimePickerDOB.TabIndex = 27;
+            this.dateTimePickerDOB.Value = new System.DateTime(2012, 9, 1, 0, 0, 0, 0);
             // 
             // lblMaritialStatus
             // 
@@ -198,7 +203,7 @@
             this.lblMaritialStatus.Location = new System.Drawing.Point(34, 313);
             this.lblMaritialStatus.Name = "lblMaritialStatus";
             this.lblMaritialStatus.Size = new System.Drawing.Size(73, 13);
-            this.lblMaritialStatus.TabIndex = 16;
+            this.lblMaritialStatus.TabIndex = 28;
             this.lblMaritialStatus.Text = "Maritial Status";
             // 
             // lblNationality
@@ -207,7 +212,7 @@
             this.lblNationality.Location = new System.Drawing.Point(34, 344);
             this.lblNationality.Name = "lblNationality";
             this.lblNationality.Size = new System.Drawing.Size(56, 13);
-            this.lblNationality.TabIndex = 18;
+            this.lblNationality.TabIndex = 30;
             this.lblNationality.Text = "Nationality";
             // 
             // ddlNationality
@@ -217,6 +222,7 @@
             "Japanese",
             "Chinese",
             "Indain"});
+            this.ddlNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlNationality.FormattingEnabled = true;
             this.ddlNationality.Items.AddRange(new object[] {
             "----Select Item----",
@@ -224,10 +230,10 @@
             "Japanese",
             "Chinese",
             "Indian"});
-            this.ddlNationality.Location = new System.Drawing.Point(224, 344);
+            this.ddlNationality.Location = new System.Drawing.Point(223, 344);
             this.ddlNationality.Name = "ddlNationality";
             this.ddlNationality.Size = new System.Drawing.Size(197, 21);
-            this.ddlNationality.TabIndex = 19;
+            this.ddlNationality.TabIndex = 31;
             this.ddlNationality.Validating += new System.ComponentModel.CancelEventHandler(this.ddlNationality_Validating);
             // 
             // lblCitizenshipID
@@ -236,15 +242,16 @@
             this.lblCitizenshipID.Location = new System.Drawing.Point(34, 377);
             this.lblCitizenshipID.Name = "lblCitizenshipID";
             this.lblCitizenshipID.Size = new System.Drawing.Size(71, 13);
-            this.lblCitizenshipID.TabIndex = 20;
+            this.lblCitizenshipID.TabIndex = 32;
             this.lblCitizenshipID.Text = "Citizenship ID";
             // 
             // txtCitizenshipID
             // 
             this.txtCitizenshipID.Location = new System.Drawing.Point(223, 377);
+            this.txtCitizenshipID.MaxLength = 50;
             this.txtCitizenshipID.Name = "txtCitizenshipID";
             this.txtCitizenshipID.Size = new System.Drawing.Size(198, 20);
-            this.txtCitizenshipID.TabIndex = 21;
+            this.txtCitizenshipID.TabIndex = 33;
             // 
             // lblLicenseID
             // 
@@ -252,39 +259,41 @@
             this.lblLicenseID.Location = new System.Drawing.Point(34, 403);
             this.lblLicenseID.Name = "lblLicenseID";
             this.lblLicenseID.Size = new System.Drawing.Size(64, 13);
-            this.lblLicenseID.TabIndex = 22;
+            this.lblLicenseID.TabIndex = 34;
             this.lblLicenseID.Text = "Licennse ID";
             // 
             // txtLicenseID
             // 
-            this.txtLicenseID.Location = new System.Drawing.Point(224, 403);
+            this.txtLicenseID.Location = new System.Drawing.Point(223, 403);
+            this.txtLicenseID.MaxLength = 50;
             this.txtLicenseID.Name = "txtLicenseID";
             this.txtLicenseID.Size = new System.Drawing.Size(197, 20);
-            this.txtLicenseID.TabIndex = 23;
+            this.txtLicenseID.TabIndex = 35;
             // 
             // lblPassportID
             // 
             this.lblPassportID.AutoSize = true;
-            this.lblPassportID.Location = new System.Drawing.Point(36, 431);
+            this.lblPassportID.Location = new System.Drawing.Point(33, 431);
             this.lblPassportID.Name = "lblPassportID";
             this.lblPassportID.Size = new System.Drawing.Size(62, 13);
-            this.lblPassportID.TabIndex = 24;
+            this.lblPassportID.TabIndex = 36;
             this.lblPassportID.Text = "Passport ID";
             // 
             // txtPassportID
             // 
             this.txtPassportID.Location = new System.Drawing.Point(222, 431);
+            this.txtPassportID.MaxLength = 50;
             this.txtPassportID.Name = "txtPassportID";
             this.txtPassportID.Size = new System.Drawing.Size(199, 20);
-            this.txtPassportID.TabIndex = 25;
+            this.txtPassportID.TabIndex = 37;
             // 
             // lblCountry
             // 
             this.lblCountry.AutoSize = true;
-            this.lblCountry.Location = new System.Drawing.Point(513, 113);
+            this.lblCountry.Location = new System.Drawing.Point(513, 90);
             this.lblCountry.Name = "lblCountry";
             this.lblCountry.Size = new System.Drawing.Size(43, 13);
-            this.lblCountry.TabIndex = 26;
+            this.lblCountry.TabIndex = 39;
             this.lblCountry.Text = "Country";
             // 
             // ddlCountry
@@ -294,6 +303,8 @@
             "Japan",
             "China",
             "India"});
+            this.ddlCountry.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlCountry.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.ddlCountry.FormattingEnabled = true;
             this.ddlCountry.Items.AddRange(new object[] {
             "----Select Item----",
@@ -301,19 +312,19 @@
             "Japan",
             "China",
             "India"});
-            this.ddlCountry.Location = new System.Drawing.Point(714, 113);
+            this.ddlCountry.Location = new System.Drawing.Point(671, 90);
             this.ddlCountry.Name = "ddlCountry";
             this.ddlCountry.Size = new System.Drawing.Size(198, 21);
-            this.ddlCountry.TabIndex = 27;
+            this.ddlCountry.TabIndex = 40;
             this.ddlCountry.Validating += new System.ComponentModel.CancelEventHandler(this.ddlCountry_Validating);
             // 
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(513, 140);
+            this.lblCity.Location = new System.Drawing.Point(513, 117);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(24, 13);
-            this.lblCity.TabIndex = 28;
+            this.lblCity.TabIndex = 41;
             this.lblCity.Text = "City";
             // 
             // ddlCity
@@ -324,156 +335,157 @@
             "Bhaktapur",
             "Lalitpur",
             "Banepa"});
+            this.ddlCity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlCity.FormattingEnabled = true;
             this.ddlCity.Items.AddRange(new object[] {
+            "----Select Item----",
             "Kathmandu",
             "Lalitpur",
             "Bhaktapur",
             "Banepa"});
-            this.ddlCity.Location = new System.Drawing.Point(714, 140);
+            this.ddlCity.Location = new System.Drawing.Point(671, 117);
             this.ddlCity.Name = "ddlCity";
             this.ddlCity.Size = new System.Drawing.Size(198, 21);
-            this.ddlCity.TabIndex = 29;
+            this.ddlCity.TabIndex = 42;
             this.ddlCity.Validating += new System.ComponentModel.CancelEventHandler(this.ddlCity_Validating);
             // 
             // lblMunicipality
             // 
             this.lblMunicipality.AutoSize = true;
-            this.lblMunicipality.Location = new System.Drawing.Point(513, 167);
+            this.lblMunicipality.Location = new System.Drawing.Point(513, 144);
             this.lblMunicipality.Name = "lblMunicipality";
             this.lblMunicipality.Size = new System.Drawing.Size(62, 13);
-            this.lblMunicipality.TabIndex = 30;
+            this.lblMunicipality.TabIndex = 43;
             this.lblMunicipality.Text = "Municipality";
             // 
             // lblDistrict
             // 
             this.lblDistrict.AutoSize = true;
-            this.lblDistrict.Location = new System.Drawing.Point(511, 193);
+            this.lblDistrict.Location = new System.Drawing.Point(511, 170);
             this.lblDistrict.Name = "lblDistrict";
             this.lblDistrict.Size = new System.Drawing.Size(39, 13);
-            this.lblDistrict.TabIndex = 32;
+            this.lblDistrict.TabIndex = 45;
             this.lblDistrict.Text = "District";
             // 
             // lblStreet
             // 
             this.lblStreet.AutoSize = true;
-            this.lblStreet.Location = new System.Drawing.Point(511, 219);
+            this.lblStreet.Location = new System.Drawing.Point(511, 196);
             this.lblStreet.Name = "lblStreet";
             this.lblStreet.Size = new System.Drawing.Size(35, 13);
-            this.lblStreet.TabIndex = 34;
+            this.lblStreet.TabIndex = 47;
             this.lblStreet.Text = "Street";
             // 
             // txtStreet
             // 
-            this.txtStreet.Location = new System.Drawing.Point(714, 219);
+            this.txtStreet.Location = new System.Drawing.Point(671, 196);
+            this.txtStreet.MaxLength = 250;
             this.txtStreet.Name = "txtStreet";
             this.txtStreet.Size = new System.Drawing.Size(198, 20);
-            this.txtStreet.TabIndex = 35;
+            this.txtStreet.TabIndex = 48;
             // 
             // lblHouseNo
             // 
             this.lblHouseNo.AutoSize = true;
-            this.lblHouseNo.Location = new System.Drawing.Point(511, 245);
+            this.lblHouseNo.Location = new System.Drawing.Point(511, 222);
             this.lblHouseNo.Name = "lblHouseNo";
             this.lblHouseNo.Size = new System.Drawing.Size(55, 13);
-            this.lblHouseNo.TabIndex = 36;
+            this.lblHouseNo.TabIndex = 49;
             this.lblHouseNo.Text = "House No";
             // 
             // txtHouseNo
             // 
-            this.txtHouseNo.Location = new System.Drawing.Point(714, 245);
+            this.txtHouseNo.Location = new System.Drawing.Point(671, 222);
+            this.txtHouseNo.MaxLength = 100;
             this.txtHouseNo.Name = "txtHouseNo";
             this.txtHouseNo.Size = new System.Drawing.Size(198, 20);
-            this.txtHouseNo.TabIndex = 37;
+            this.txtHouseNo.TabIndex = 50;
             // 
             // lblAreaCode
             // 
             this.lblAreaCode.AutoSize = true;
-            this.lblAreaCode.Location = new System.Drawing.Point(511, 271);
+            this.lblAreaCode.Location = new System.Drawing.Point(511, 248);
             this.lblAreaCode.Name = "lblAreaCode";
             this.lblAreaCode.Size = new System.Drawing.Size(57, 13);
-            this.lblAreaCode.TabIndex = 38;
+            this.lblAreaCode.TabIndex = 51;
             this.lblAreaCode.Text = "Area Code";
             // 
             // txtAreaCode
             // 
-            this.txtAreaCode.Location = new System.Drawing.Point(714, 271);
+            this.txtAreaCode.Location = new System.Drawing.Point(671, 248);
             this.txtAreaCode.Name = "txtAreaCode";
             this.txtAreaCode.Size = new System.Drawing.Size(198, 20);
-            this.txtAreaCode.TabIndex = 39;
+            this.txtAreaCode.TabIndex = 52;
+            this.txtAreaCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAreaCode_KeyDown);
             // 
             // lblAddress
             // 
             this.lblAddress.AutoSize = true;
-            this.lblAddress.Location = new System.Drawing.Point(511, 300);
+            this.lblAddress.Location = new System.Drawing.Point(511, 277);
             this.lblAddress.Name = "lblAddress";
             this.lblAddress.Size = new System.Drawing.Size(45, 13);
-            this.lblAddress.TabIndex = 40;
+            this.lblAddress.TabIndex = 54;
             this.lblAddress.Text = "Address";
-            // 
-            // txtAddress
-            // 
-            this.txtAddress.Location = new System.Drawing.Point(714, 300);
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(198, 20);
-            this.txtAddress.TabIndex = 41;
             // 
             // lblHomeTelephone
             // 
             this.lblHomeTelephone.AutoSize = true;
-            this.lblHomeTelephone.Location = new System.Drawing.Point(509, 329);
+            this.lblHomeTelephone.Location = new System.Drawing.Point(509, 339);
             this.lblHomeTelephone.Name = "lblHomeTelephone";
             this.lblHomeTelephone.Size = new System.Drawing.Size(89, 13);
-            this.lblHomeTelephone.TabIndex = 42;
+            this.lblHomeTelephone.TabIndex = 56;
             this.lblHomeTelephone.Text = "Home Telephone";
             // 
             // txtHomeTelephone
             // 
-            this.txtHomeTelephone.Location = new System.Drawing.Point(714, 329);
+            this.txtHomeTelephone.Location = new System.Drawing.Point(671, 339);
+            this.txtHomeTelephone.MaxLength = 100;
             this.txtHomeTelephone.Name = "txtHomeTelephone";
             this.txtHomeTelephone.Size = new System.Drawing.Size(198, 20);
-            this.txtHomeTelephone.TabIndex = 43;
+            this.txtHomeTelephone.TabIndex = 57;
             // 
             // lblMobileNo
             // 
             this.lblMobileNo.AutoSize = true;
-            this.lblMobileNo.Location = new System.Drawing.Point(511, 357);
+            this.lblMobileNo.Location = new System.Drawing.Point(511, 367);
             this.lblMobileNo.Name = "lblMobileNo";
             this.lblMobileNo.Size = new System.Drawing.Size(55, 13);
-            this.lblMobileNo.TabIndex = 44;
+            this.lblMobileNo.TabIndex = 58;
             this.lblMobileNo.Text = "Mobile No";
             // 
             // txtMobileNo
             // 
-            this.txtMobileNo.Location = new System.Drawing.Point(714, 357);
+            this.txtMobileNo.Location = new System.Drawing.Point(671, 367);
+            this.txtMobileNo.MaxLength = 100;
             this.txtMobileNo.Name = "txtMobileNo";
             this.txtMobileNo.Size = new System.Drawing.Size(198, 20);
-            this.txtMobileNo.TabIndex = 45;
+            this.txtMobileNo.TabIndex = 59;
             // 
             // lblEmailAddress
             // 
             this.lblEmailAddress.AutoSize = true;
-            this.lblEmailAddress.Location = new System.Drawing.Point(509, 386);
+            this.lblEmailAddress.Location = new System.Drawing.Point(509, 396);
             this.lblEmailAddress.Name = "lblEmailAddress";
             this.lblEmailAddress.Size = new System.Drawing.Size(79, 13);
-            this.lblEmailAddress.TabIndex = 46;
+            this.lblEmailAddress.TabIndex = 60;
             this.lblEmailAddress.Text = "E-mail  Address";
             // 
             // txtEmailAddress
             // 
-            this.txtEmailAddress.Location = new System.Drawing.Point(714, 386);
+            this.txtEmailAddress.Location = new System.Drawing.Point(671, 396);
+            this.txtEmailAddress.MaxLength = 100;
             this.txtEmailAddress.Name = "txtEmailAddress";
             this.txtEmailAddress.Size = new System.Drawing.Size(198, 20);
-            this.txtEmailAddress.TabIndex = 47;
+            this.txtEmailAddress.TabIndex = 61;
             this.txtEmailAddress.Leave += new System.EventHandler(this.txtEmailAddress_Leave);
             // 
             // lblPhoto
             // 
             this.lblPhoto.AutoSize = true;
-            this.lblPhoto.Location = new System.Drawing.Point(509, 419);
+            this.lblPhoto.Location = new System.Drawing.Point(509, 429);
             this.lblPhoto.Name = "lblPhoto";
             this.lblPhoto.Size = new System.Drawing.Size(35, 13);
-            this.lblPhoto.TabIndex = 48;
+            this.lblPhoto.TabIndex = 62;
             this.lblPhoto.Text = "Photo";
             // 
             // lblPersonalDetails
@@ -482,9 +494,9 @@
             this.lblPersonalDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPersonalDetails.Location = new System.Drawing.Point(34, 172);
             this.lblPersonalDetails.Name = "lblPersonalDetails";
-            this.lblPersonalDetails.Size = new System.Drawing.Size(186, 13);
-            this.lblPersonalDetails.TabIndex = 49;
-            this.lblPersonalDetails.Text = "Personal Details (Block Letters)";
+            this.lblPersonalDetails.Size = new System.Drawing.Size(99, 13);
+            this.lblPersonalDetails.TabIndex = 19;
+            this.lblPersonalDetails.Text = "Personal Details";
             // 
             // lblCreatedDate
             // 
@@ -492,17 +504,17 @@
             this.lblCreatedDate.Location = new System.Drawing.Point(36, 141);
             this.lblCreatedDate.Name = "lblCreatedDate";
             this.lblCreatedDate.Size = new System.Drawing.Size(70, 13);
-            this.lblCreatedDate.TabIndex = 50;
+            this.lblCreatedDate.TabIndex = 17;
             this.lblCreatedDate.Text = "Created Date";
             // 
             // lblAddressContact
             // 
             this.lblAddressContact.AutoSize = true;
             this.lblAddressContact.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAddressContact.Location = new System.Drawing.Point(513, 88);
+            this.lblAddressContact.Location = new System.Drawing.Point(513, 65);
             this.lblAddressContact.Name = "lblAddressContact";
             this.lblAddressContact.Size = new System.Drawing.Size(125, 13);
-            this.lblAddressContact.TabIndex = 52;
+            this.lblAddressContact.TabIndex = 38;
             this.lblAddressContact.Text = "Address and Contact";
             // 
             // btnCancel
@@ -511,7 +523,7 @@
             this.btnCancel.Location = new System.Drawing.Point(474, 504);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 54;
+            this.btnCancel.TabIndex = 66;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -521,7 +533,7 @@
             this.btnOk.Location = new System.Drawing.Point(396, 504);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 53;
+            this.btnOk.TabIndex = 65;
             this.btnOk.Text = "&OK";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -530,6 +542,7 @@
             this.ddlMaritialStatus.AutoCompleteCustomSource.AddRange(new string[] {
             "Married",
             "Unmarried"});
+            this.ddlMaritialStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMaritialStatus.FormattingEnabled = true;
             this.ddlMaritialStatus.Items.AddRange(new object[] {
             "----Select Item ----",
@@ -538,7 +551,7 @@
             this.ddlMaritialStatus.Location = new System.Drawing.Point(222, 313);
             this.ddlMaritialStatus.Name = "ddlMaritialStatus";
             this.ddlMaritialStatus.Size = new System.Drawing.Size(199, 21);
-            this.ddlMaritialStatus.TabIndex = 55;
+            this.ddlMaritialStatus.TabIndex = 29;
             this.ddlMaritialStatus.Validating += new System.ComponentModel.CancelEventHandler(this.ddlMaritialStatus_Validating);
             // 
             // btnDelete
@@ -546,7 +559,7 @@
             this.btnDelete.Location = new System.Drawing.Point(165, 12);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 59;
+            this.btnDelete.TabIndex = 2;
             this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -556,7 +569,7 @@
             this.btnEdit.Location = new System.Drawing.Point(91, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 23);
-            this.btnEdit.TabIndex = 58;
+            this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "&Edit";
             this.btnEdit.UseVisualStyleBackColor = true;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click_1);
@@ -566,7 +579,7 @@
             this.btnAdd.Location = new System.Drawing.Point(17, 12);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
-            this.btnAdd.TabIndex = 57;
+            this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "&Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -584,7 +597,7 @@
             this.ddlGender.Location = new System.Drawing.Point(222, 253);
             this.ddlGender.Name = "ddlGender";
             this.ddlGender.Size = new System.Drawing.Size(199, 21);
-            this.ddlGender.TabIndex = 56;
+            this.ddlGender.TabIndex = 25;
             this.ddlGender.Validating += new System.ComponentModel.CancelEventHandler(this.ddlGender_Validating);
             // 
             // btnLast
@@ -593,7 +606,7 @@
             this.btnLast.Location = new System.Drawing.Point(911, 12);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(29, 23);
-            this.btnLast.TabIndex = 63;
+            this.btnLast.TabIndex = 6;
             this.btnLast.Text = ">>";
             this.btnLast.UseVisualStyleBackColor = true;
             this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
@@ -604,7 +617,7 @@
             this.btnNext.Location = new System.Drawing.Point(885, 12);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(27, 23);
-            this.btnNext.TabIndex = 62;
+            this.btnNext.TabIndex = 5;
             this.btnNext.Text = ">";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
@@ -615,7 +628,7 @@
             this.btnPrevious.Location = new System.Drawing.Point(859, 12);
             this.btnPrevious.Name = "btnPrevious";
             this.btnPrevious.Size = new System.Drawing.Size(27, 23);
-            this.btnPrevious.TabIndex = 61;
+            this.btnPrevious.TabIndex = 4;
             this.btnPrevious.Text = "<";
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
@@ -626,7 +639,7 @@
             this.btnFirst.Location = new System.Drawing.Point(828, 12);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(31, 23);
-            this.btnFirst.TabIndex = 60;
+            this.btnFirst.TabIndex = 3;
             this.btnFirst.Text = "<<";
             this.btnFirst.UseVisualStyleBackColor = true;
             this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
@@ -638,7 +651,7 @@
             this.lblAreaHeading.Location = new System.Drawing.Point(25, 41);
             this.lblAreaHeading.Name = "lblAreaHeading";
             this.lblAreaHeading.Size = new System.Drawing.Size(59, 13);
-            this.lblAreaHeading.TabIndex = 64;
+            this.lblAreaHeading.TabIndex = 7;
             this.lblAreaHeading.Text = "Customer";
             // 
             // rectangleShape2
@@ -667,14 +680,14 @@
             this.S.Name = "S";
             this.S.Size = new System.Drawing.Size(923, 414);
             // 
-            // dateTimePickerCreateddate
+            // dateTimePickerCreatedDate
             // 
-            this.dateTimePickerCreateddate.Location = new System.Drawing.Point(223, 142);
-            this.dateTimePickerCreateddate.Name = "dateTimePickerCreateddate";
-            this.dateTimePickerCreateddate.Size = new System.Drawing.Size(199, 20);
-            this.dateTimePickerCreateddate.TabIndex = 51;
-            this.dateTimePickerCreateddate.Value = new System.DateTime(2012, 8, 26, 21, 33, 0, 0);
-            this.dateTimePickerCreateddate.ValueChanged += new System.EventHandler(this.dateTimePickerCreateddate_ValueChanged);
+            this.dateTimePickerCreatedDate.Location = new System.Drawing.Point(223, 142);
+            this.dateTimePickerCreatedDate.Name = "dateTimePickerCreatedDate";
+            this.dateTimePickerCreatedDate.Size = new System.Drawing.Size(199, 20);
+            this.dateTimePickerCreatedDate.TabIndex = 18;
+            this.dateTimePickerCreatedDate.Value = new System.DateTime(2012, 9, 1, 0, 0, 0, 0);
+            this.dateTimePickerCreatedDate.ValueChanged += new System.EventHandler(this.dateTimePickerCreatedDate_ValueChanged);
             // 
             // openFileDialog1
             // 
@@ -682,23 +695,24 @@
             // 
             // txtPhotoPath
             // 
-            this.txtPhotoPath.Location = new System.Drawing.Point(714, 419);
+            this.txtPhotoPath.Location = new System.Drawing.Point(671, 429);
             this.txtPhotoPath.Name = "txtPhotoPath";
             this.txtPhotoPath.Size = new System.Drawing.Size(124, 20);
-            this.txtPhotoPath.TabIndex = 67;
+            this.txtPhotoPath.TabIndex = 63;
             // 
             // btnBrowsePhoto
             // 
-            this.btnBrowsePhoto.Location = new System.Drawing.Point(844, 415);
+            this.btnBrowsePhoto.Location = new System.Drawing.Point(801, 425);
             this.btnBrowsePhoto.Name = "btnBrowsePhoto";
             this.btnBrowsePhoto.Size = new System.Drawing.Size(68, 27);
-            this.btnBrowsePhoto.TabIndex = 66;
+            this.btnBrowsePhoto.TabIndex = 64;
             this.btnBrowsePhoto.Text = "Browse";
             this.btnBrowsePhoto.UseVisualStyleBackColor = true;
             this.btnBrowsePhoto.Click += new System.EventHandler(this.btnBrowsePhoto_Click);
             // 
             // ddlMunicipality
             // 
+            this.ddlMunicipality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlMunicipality.FormattingEnabled = true;
             this.ddlMunicipality.Items.AddRange(new object[] {
             "----Select Item----",
@@ -706,14 +720,15 @@
             "Lalitpur",
             "Bhaktapur",
             "Banepa"});
-            this.ddlMunicipality.Location = new System.Drawing.Point(714, 167);
+            this.ddlMunicipality.Location = new System.Drawing.Point(671, 144);
             this.ddlMunicipality.Name = "ddlMunicipality";
             this.ddlMunicipality.Size = new System.Drawing.Size(198, 21);
-            this.ddlMunicipality.TabIndex = 68;
+            this.ddlMunicipality.TabIndex = 44;
             this.ddlMunicipality.Validating += new System.ComponentModel.CancelEventHandler(this.ddlMunicipality_Validating);
             // 
             // ddlDistrict
             // 
+            this.ddlDistrict.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlDistrict.FormattingEnabled = true;
             this.ddlDistrict.Items.AddRange(new object[] {
             "----Select Item----",
@@ -721,10 +736,10 @@
             "Lalitpur",
             "Bhaktapur",
             "Banepa"});
-            this.ddlDistrict.Location = new System.Drawing.Point(714, 193);
+            this.ddlDistrict.Location = new System.Drawing.Point(671, 170);
             this.ddlDistrict.Name = "ddlDistrict";
             this.ddlDistrict.Size = new System.Drawing.Size(198, 21);
-            this.ddlDistrict.TabIndex = 69;
+            this.ddlDistrict.TabIndex = 46;
             this.ddlDistrict.Validating += new System.ComponentModel.CancelEventHandler(this.ddlDistrict_Validating);
             // 
             // btnDump1
@@ -732,7 +747,7 @@
             this.btnDump1.Location = new System.Drawing.Point(427, 91);
             this.btnDump1.Name = "btnDump1";
             this.btnDump1.Size = new System.Drawing.Size(30, 23);
-            this.btnDump1.TabIndex = 70;
+            this.btnDump1.TabIndex = 13;
             this.btnDump1.Text = "......";
             this.btnDump1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDump1.UseVisualStyleBackColor = true;
@@ -743,7 +758,7 @@
             this.btnDump2.Location = new System.Drawing.Point(427, 116);
             this.btnDump2.Name = "btnDump2";
             this.btnDump2.Size = new System.Drawing.Size(30, 23);
-            this.btnDump2.TabIndex = 71;
+            this.btnDump2.TabIndex = 16;
             this.btnDump2.Text = "......";
             this.btnDump2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDump2.UseVisualStyleBackColor = true;
@@ -755,7 +770,7 @@
             this.lblMembershipID.Location = new System.Drawing.Point(36, 74);
             this.lblMembershipID.Name = "lblMembershipID";
             this.lblMembershipID.Size = new System.Drawing.Size(78, 13);
-            this.lblMembershipID.TabIndex = 72;
+            this.lblMembershipID.TabIndex = 8;
             this.lblMembershipID.Text = "Membership ID";
             // 
             // btnMembershipID
@@ -763,23 +778,49 @@
             this.btnMembershipID.Location = new System.Drawing.Point(426, 65);
             this.btnMembershipID.Name = "btnMembershipID";
             this.btnMembershipID.Size = new System.Drawing.Size(30, 23);
-            this.btnMembershipID.TabIndex = 74;
+            this.btnMembershipID.TabIndex = 10;
             this.btnMembershipID.Text = "......";
             this.btnMembershipID.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMembershipID.UseVisualStyleBackColor = true;
+            this.btnMembershipID.Click += new System.EventHandler(this.btnMembershipID_Click);
             // 
             // txtMembershipID
             // 
             this.txtMembershipID.Location = new System.Drawing.Point(222, 68);
+            this.txtMembershipID.MaxLength = 100;
             this.txtMembershipID.Name = "txtMembershipID";
             this.txtMembershipID.Size = new System.Drawing.Size(198, 20);
-            this.txtMembershipID.TabIndex = 73;
+            this.txtMembershipID.TabIndex = 9;
+            this.txtMembershipID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMembershipID_KeyDown);
+            // 
+            // btnDump3
+            // 
+            this.btnDump3.Location = new System.Drawing.Point(885, 248);
+            this.btnDump3.Name = "btnDump3";
+            this.btnDump3.Size = new System.Drawing.Size(30, 23);
+            this.btnDump3.TabIndex = 53;
+            this.btnDump3.Text = "......";
+            this.btnDump3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDump3.UseVisualStyleBackColor = true;
+            this.btnDump3.Click += new System.EventHandler(this.btnDump3_Click);
+            // 
+            // txtAddress
+            // 
+            this.txtAddress.Location = new System.Drawing.Point(671, 274);
+            this.txtAddress.MaxLength = 1024;
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAddress.Size = new System.Drawing.Size(198, 59);
+            this.txtAddress.TabIndex = 55;
             // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 559);
+            this.Controls.Add(this.txtAddress);
+            this.Controls.Add(this.btnDump3);
             this.Controls.Add(this.btnMembershipID);
             this.Controls.Add(this.txtMembershipID);
             this.Controls.Add(this.lblMembershipID);
@@ -802,7 +843,7 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.lblAddressContact);
-            this.Controls.Add(this.dateTimePickerCreateddate);
+            this.Controls.Add(this.dateTimePickerCreatedDate);
             this.Controls.Add(this.lblCreatedDate);
             this.Controls.Add(this.lblPersonalDetails);
             this.Controls.Add(this.lblPhoto);
@@ -812,7 +853,6 @@
             this.Controls.Add(this.lblMobileNo);
             this.Controls.Add(this.txtHomeTelephone);
             this.Controls.Add(this.lblHomeTelephone);
-            this.Controls.Add(this.txtAddress);
             this.Controls.Add(this.lblAddress);
             this.Controls.Add(this.txtAreaCode);
             this.Controls.Add(this.lblAreaCode);
@@ -894,7 +934,6 @@
         private System.Windows.Forms.Label lblAreaCode;
         private System.Windows.Forms.TextBox txtAreaCode;
         private System.Windows.Forms.Label lblAddress;
-        private System.Windows.Forms.TextBox txtAddress;
         private System.Windows.Forms.Label lblHomeTelephone;
         private System.Windows.Forms.TextBox txtHomeTelephone;
         private System.Windows.Forms.Label lblMobileNo;
@@ -920,7 +959,7 @@
         private Microsoft.VisualBasic.PowerPacks.RectangleShape rectangleShape2;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape S;
-        private System.Windows.Forms.DateTimePicker dateTimePickerCreateddate;
+        private System.Windows.Forms.DateTimePicker dateTimePickerCreatedDate;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.TextBox txtPhotoPath;
         private System.Windows.Forms.Button btnBrowsePhoto;
@@ -931,5 +970,7 @@
         private System.Windows.Forms.Label lblMembershipID;
         private System.Windows.Forms.Button btnMembershipID;
         private System.Windows.Forms.TextBox txtMembershipID;
+        private System.Windows.Forms.Button btnDump3;
+        private System.Windows.Forms.TextBox txtAddress;
     }
 }

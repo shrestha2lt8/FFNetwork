@@ -214,7 +214,7 @@ namespace FFModal.Controller
                 List<FFModal.Customer> lstCustomers = query.ToList();
                 if (lstCustomers.Count>0)
                 {
-                    return Convert.ToDouble(lstCustomers [lstCustomers.Count-1].MembershipID.Replace(pAreaCode + "-", "")).ToString("00000");
+                    return pAreaCode + "-" +  (Convert.ToInt32(lstCustomers[lstCustomers.Count - 1].MembershipID.Replace(pAreaCode + "-", "")) + 1).ToString("00000");
                 }
                 else
                 {
