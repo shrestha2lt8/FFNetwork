@@ -48,6 +48,7 @@ namespace FF_Network_
             {
                 success = true;
                 FFNetwork.Utility.AdminUserId = UserController.GetUser(txtUser.Text, txtPassword.Text).UserID;
+                FFNetwork.Utility.AdminUserName = UserController.GetUser(txtUser.Text, txtPassword.Text).UserName;
                 this.Close();
             }
         }

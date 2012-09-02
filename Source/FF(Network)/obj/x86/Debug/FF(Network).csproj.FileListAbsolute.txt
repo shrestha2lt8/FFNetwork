@@ -50,3 +50,4 @@ D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\Gener
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\GenerateResource.write.1.tlog
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\FF(Network).exe
 D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\FF(Network).pdb
+D:\OfficeWorks\Network-Buisness\FFNetwork\Source\FF(Network)\obj\x86\Debug\FF_Network_.frmChangePassword.resources

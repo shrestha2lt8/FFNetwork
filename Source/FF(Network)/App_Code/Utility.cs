@@ -11,6 +11,7 @@ namespace FFNetwork
   public static  class Utility
     {
         public static Int32 AdminUserId;
+        public static string AdminUserName;
 
       /// <summary>
       /// Checks given string is number or not 

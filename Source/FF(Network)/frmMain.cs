@@ -114,5 +114,11 @@ namespace FF_Network_
             frmCustomer frmCustomer = new frmCustomer();
             frmCustomer.ShowDialog();
         }
+
+        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmChangePassword frmChange = new frmChangePassword();
+            frmChange.ShowDialog();
+        }
     }
 }
