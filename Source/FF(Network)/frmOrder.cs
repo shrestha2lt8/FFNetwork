@@ -23,8 +23,15 @@ namespace FF_Network_
             }
             else
             {
-                OrderController.Add(txtMemberID.Text.Trim(), Convert.ToDecimal(txtAmount.Text.Trim()), txtDesc.Text.Trim(), txtRemarks.Text.Trim());
-                ClearCtrls();
+                if (this.Validate(true))
+                {
+                    OrderController.Add(txtMemberID.Text.Trim(), Convert.ToDecimal(txtAmount.Text.Trim()), txtDesc.Text.Trim(), txtRemarks.Text.Trim(), mtxtOrderDate.Text.Trim());
+                    ClearCtrls();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong Inputs");
+                }
             }
 
         }
@@ -36,10 +43,11 @@ namespace FF_Network_
 
         private void ClearCtrls()
         {
-            txtMemberID.Text = string.Empty;
-            this.txtAmount.Text = string.Empty;
-            this.txtDesc.Text = string.Empty;
-            this.txtRemarks.Text = string.Empty;
+            txtMemberID.Clear();
+            this.txtAmount.Clear();
+            this.txtDesc.Clear();
+            this.txtRemarks.Clear();
+            this.mtxtOrderDate.Clear();
         }
 
         private void btnLookUp_Click(object sender, EventArgs e)
