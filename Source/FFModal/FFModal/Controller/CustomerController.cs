@@ -221,7 +221,28 @@ namespace FFModal.Controller
                     return pAreaCode + "-" + rec.ToString("00000"); 
                 }
             }
+        }
 
+        /// <summary>
+        /// Check given membershipid is valid or not
+        /// </summary>
+        /// <param name="pMembershipID"></param>
+        /// <returns></returns>
+        public static bool IsValidReferenceMemberID(string pMembershipID)
+        {
+            using (NetworkEntities context = new NetworkEntities())
+            {
+                var query = from c in context.Customers where c.ReferenceID==pMembershipID select c;
+                int maxNode = context.ComissionSettings.ToList()[0].MaxLevel;
+                if (maxNode <= context.Customers.Count())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
         }
     }
 }

@@ -26,6 +26,13 @@ namespace FF_Network_
         private void btnOk_Click(object sender, EventArgs e)
         {
             int Num;
+            if (txtTaxRate.Text.Trim() == "")
+            {
+                MessageBox.Show("Please enter tax rate.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtTaxRate.Focus();
+                return;
+            }
+
             bool isNum = int.TryParse(txtTaxRate.Text, out Num);
                 if(isNum==true)
                 {
