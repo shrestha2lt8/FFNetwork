@@ -33,6 +33,8 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="NetworkModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="MROrientationDate" ColumnName="MROrientationDate" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
           <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
           <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
@@ -74,20 +76,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="NetworkModel.Order">
-        <MappingFragment StoreEntitySet="Order">
-          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-          <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Amount" ColumnName="Amount" />
-          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
-          <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="TaxSettings">
       <EntityTypeMapping TypeName="NetworkModel.TaxSetting">
         <MappingFragment StoreEntitySet="TaxSetting">
@@ -108,6 +96,29 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Designation" ColumnName="Designation" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="NetworkModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="NetworkModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+          <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

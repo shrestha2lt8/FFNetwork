@@ -6,11 +6,16 @@
     <EntitySet Name="ComissionSetting" EntityType="NetworkModel.Store.ComissionSetting" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Customer" EntityType="NetworkModel.Store.Customer" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="CustomerComission" EntityType="NetworkModel.Store.CustomerComission" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CustomerType" EntityType="NetworkModel.Store.CustomerType" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Order" EntityType="NetworkModel.Store.Order" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TaxSetting" EntityType="NetworkModel.Store.TaxSetting" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="User" EntityType="NetworkModel.Store.User" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.Store.FK_Customer_Area">
       <End Role="Area" EntitySet="Area" />
+      <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.Store.FK_Customer_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerType" />
       <End Role="Customer" EntitySet="Customer" />
     </AssociationSet>
     <AssociationSet Name="FK_Customer_User" Association="NetworkModel.Store.FK_Customer_User">
@@ -86,6 +91,8 @@
     <Property Name="Mobile" Type="varchar" MaxLength="100" />
     <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
     <Property Name="Photo" Type="image" />
+    <Property Name="CustomerTypeID" Type="int" Nullable="false" />
+    <Property Name="MROrientationDate" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="CustomerComission">
     <Key>
@@ -98,18 +105,26 @@
     <Property Name="ComissionPaidDate" Type="datetime" Nullable="false" />
     <Property Name="IsComissionPaid" Type="bit" Nullable="false" />
   </EntityType>
+  <EntityType Name="CustomerType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+  </EntityType>
   <EntityType Name="Order">
     <Key>
       <PropertyRef Name="OrderID" />
     </Key>
     <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
-    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1024" />
     <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
     <Property Name="IsDelivered" Type="bit" Nullable="false" />
-    <Property Name="DeliveredDate" Type="datetime" />
-    <Property Name="Description" Type="nvarchar" MaxLength="1024" />
-    <Property Name="Remarks" Type="nvarchar" MaxLength="1024" />
+    <Property Name="DeliveredDate" Type="datetime" Nullable="false" />
+    <Property Name="OrderDate" Type="datetime" Nullable="false" />
+    <Property Name="Remarks" Type="varchar(max)" />
+    <Property Name="IsPaid" Type="bit" />
   </EntityType>
   <EntityType Name="TaxSetting">
     <Key>
@@ -141,6 +156,18 @@
       </Principal>
       <Dependent Role="Customer">
         <PropertyRef Name="AreaCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Customer_CustomerType">
+    <End Role="CustomerType" Type="NetworkModel.Store.CustomerType" Multiplicity="1" />
+    <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
