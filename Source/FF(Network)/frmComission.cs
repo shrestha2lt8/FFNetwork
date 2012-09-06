@@ -54,7 +54,7 @@ namespace FF_Network_
 
             if (txtPercentage.Text.Trim() == "")
             {
-                MessageBox.Show("Please enter percentage.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please enter max node.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtPercentage.Focus();
                 return;
             }
