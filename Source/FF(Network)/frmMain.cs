@@ -67,11 +67,7 @@ namespace FF_Network_
             frmLogin frmLogin = new frmLogin();
             frmLogin.ShowDialog();
             if (frmLogin.success == true)
-            {
                 enableMenus(true);
-                tsslblDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                tsslblUser.Text = FFNetwork.Utility.AdminUserName;
-            }
         }
 
         private void loginToolStripMenuItem_Click_1(object sender, EventArgs e)
@@ -79,11 +75,7 @@ namespace FF_Network_
             frmLogin frmLogin = new frmLogin();
             frmLogin.ShowDialog();
             if (frmLogin.success == true)
-            {
                 enableMenus(true);
-                tsslblDate.Text = DateTime.Now.ToString("yyyy-MM-dd");
-                tsslblUser.Text = FFNetwork.Utility.AdminUserName;
-            }
         }
 
         public void enableMenus(bool pState )
@@ -121,12 +113,6 @@ namespace FF_Network_
         {
             frmCustomer frmCustomer = new frmCustomer();
             frmCustomer.ShowDialog();
-        }
-
-        private void changePasswordToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmChangePassword frmChange = new frmChangePassword();
-            frmChange.ShowDialog();
         }
     }
 }

@@ -45,7 +45,7 @@
             this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.rectangleShape2,
             this.rectangleShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(502, 401);
+            this.shapeContainer1.Size = new System.Drawing.Size(668, 401);
             this.shapeContainer1.TabIndex = 1;
             this.shapeContainer1.TabStop = false;
             // 
@@ -54,14 +54,14 @@
             this.rectangleShape2.CornerRadius = 5;
             this.rectangleShape2.Location = new System.Drawing.Point(16, 9);
             this.rectangleShape2.Name = "rectangleShape2";
-            this.rectangleShape2.Size = new System.Drawing.Size(465, 329);
+            this.rectangleShape2.Size = new System.Drawing.Size(636, 329);
             // 
             // rectangleShape1
             // 
             this.rectangleShape1.CornerRadius = 5;
             this.rectangleShape1.Location = new System.Drawing.Point(18, 347);
             this.rectangleShape1.Name = "rectangleShape1";
-            this.rectangleShape1.Size = new System.Drawing.Size(467, 44);
+            this.rectangleShape1.Size = new System.Drawing.Size(636, 44);
             // 
             // dgvLookup
             // 
@@ -69,18 +69,15 @@
             this.dgvLookup.AllowUserToDeleteRows = false;
             this.dgvLookup.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLookup.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvLookup.GridColor = System.Drawing.SystemColors.Menu;
             this.dgvLookup.Location = new System.Drawing.Point(28, 22);
-            this.dgvLookup.MultiSelect = false;
             this.dgvLookup.Name = "dgvLookup";
-            this.dgvLookup.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvLookup.Size = new System.Drawing.Size(438, 307);
+            this.dgvLookup.Size = new System.Drawing.Size(614, 307);
             this.dgvLookup.TabIndex = 2;
             // 
             // btnOk
             // 
-            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnOk.Location = new System.Drawing.Point(136, 352);
+            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.Location = new System.Drawing.Point(230, 352);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(102, 36);
             this.btnOk.TabIndex = 0;
@@ -90,8 +87,8 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnCancel.Location = new System.Drawing.Point(240, 352);
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.Location = new System.Drawing.Point(334, 352);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 36);
             this.btnCancel.TabIndex = 1;
@@ -103,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(502, 401);
+            this.ClientSize = new System.Drawing.Size(668, 401);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.dgvLookup);
@@ -112,7 +109,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLookup";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmLookup";
             this.Load += new System.EventHandler(this.frmLookup_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLookup)).EndInit();

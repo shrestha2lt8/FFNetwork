@@ -149,14 +149,12 @@
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.shapeContainer1);
-            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmComission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FF - Comission";
             this.Load += new System.EventHandler(this.frmComission_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmComission_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

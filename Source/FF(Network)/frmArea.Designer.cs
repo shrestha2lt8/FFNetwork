@@ -125,7 +125,6 @@
             // txtAreaCode
             // 
             this.txtAreaCode.Location = new System.Drawing.Point(94, 68);
-            this.txtAreaCode.MaxLength = 5;
             this.txtAreaCode.Name = "txtAreaCode";
             this.txtAreaCode.Size = new System.Drawing.Size(104, 20);
             this.txtAreaCode.TabIndex = 7;
@@ -135,7 +134,6 @@
             // txtAreaName
             // 
             this.txtAreaName.Location = new System.Drawing.Point(94, 103);
-            this.txtAreaName.MaxLength = 250;
             this.txtAreaName.Name = "txtAreaName";
             this.txtAreaName.Size = new System.Drawing.Size(195, 20);
             this.txtAreaName.TabIndex = 9;

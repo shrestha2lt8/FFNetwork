@@ -37,29 +37,6 @@ namespace FF_Network_
         private void btnOk_Click(object sender, EventArgs e)
         {
             //validation
-            if (txtMaxLevel.Text.Trim() == "")
-            {
-                MessageBox.Show("Please enter max level.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaxLevel.Focus();
-                return;
-            }
-
-            if (txtMaxNode.Text.Trim() == "")
-            {
-                MessageBox.Show("Please enter max node.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMaxNode.Focus();
-                return;
-            }
-
-
-            if (txtPercentage.Text.Trim() == "")
-            {
-                MessageBox.Show("Please enter max node.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtPercentage.Focus();
-                return;
-            }
-
-
             if (Utility.IsNumber(txtMaxLevel.Text) == false)
             {
                 MessageBox.Show("Max level should be number", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -100,12 +77,6 @@ namespace FF_Network_
                 txtMaxNode.Text = objComissionSetting.MaxNode.ToString();
                 txtPercentage.Text = objComissionSetting.ComissionPercentage.ToString();
             }
-        }
-
-        private void frmComission_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                this.Close();
         }
     }
 }

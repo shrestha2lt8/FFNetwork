@@ -109,14 +109,12 @@
             this.Controls.Add(this.txtTaxRate);
             this.Controls.Add(this.lblTaxRate);
             this.Controls.Add(this.shapeContainer1);
-            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmTax";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FF: Tax";
             this.Load += new System.EventHandler(this.frmTax_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmTax_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

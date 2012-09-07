@@ -214,35 +214,14 @@ namespace FFModal.Controller
                 List<FFModal.Customer> lstCustomers = query.ToList();
                 if (lstCustomers.Count>0)
                 {
-                    return pAreaCode + "-" +  (Convert.ToInt32(lstCustomers[lstCustomers.Count - 1].MembershipID.Replace(pAreaCode + "-", "")) + 1).ToString("00000");
+                    return Convert.ToDouble(lstCustomers [lstCustomers.Count-1].MembershipID.Replace(pAreaCode + "-", "")).ToString("00000");
                 }
                 else
                 {
                     return pAreaCode + "-" + rec.ToString("00000"); 
                 }
             }
-        }
 
-        /// <summary>
-        /// Check given membershipid is valid or not
-        /// </summary>
-        /// <param name="pMembershipID"></param>
-        /// <returns></returns>
-        public static bool IsValidReferenceMemberID(string pMembershipID)
-        {
-            using (NetworkEntities context = new NetworkEntities())
-            {
-                var query = from c in context.Customers where c.ReferenceID==pMembershipID select c;
-                int maxNode = context.ComissionSettings.ToList()[0].MaxLevel;
-                if (maxNode <= context.Customers.Count())
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
         }
     }
 }

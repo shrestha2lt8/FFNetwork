@@ -11,16 +11,11 @@
           <EntitySet Name="ComissionSetting" EntityType="NetworkModel.Store.ComissionSetting" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Customer" EntityType="NetworkModel.Store.Customer" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CustomerComission" EntityType="NetworkModel.Store.CustomerComission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CustomerType" EntityType="NetworkModel.Store.CustomerType" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Order" EntityType="NetworkModel.Store.Order" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="TaxSetting" EntityType="NetworkModel.Store.TaxSetting" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="User" EntityType="NetworkModel.Store.User" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.Store.FK_Customer_Area">
             <End Role="Area" EntitySet="Area" />
-            <End Role="Customer" EntitySet="Customer" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.Store.FK_Customer_CustomerType">
-            <End Role="CustomerType" EntitySet="CustomerType" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="FK_Customer_User" Association="NetworkModel.Store.FK_Customer_User">
@@ -96,8 +91,6 @@
           <Property Name="Mobile" Type="varchar" MaxLength="100" />
           <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
           <Property Name="Photo" Type="image" />
-          <Property Name="CustomerTypeID" Type="int" Nullable="false" />
-          <Property Name="MROrientationDate" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="CustomerComission">
           <Key>
@@ -110,26 +103,18 @@
           <Property Name="ComissionPaidDate" Type="datetime" Nullable="false" />
           <Property Name="IsComissionPaid" Type="bit" Nullable="false" />
         </EntityType>
-        <EntityType Name="CustomerType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
-        </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="OrderID" />
           </Key>
           <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
           <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="IsDelivered" Type="bit" Nullable="false" />
-          <Property Name="DeliveredDate" Type="datetime" Nullable="false" />
-          <Property Name="OrderDate" Type="datetime" Nullable="false" />
-          <Property Name="Remarks" Type="varchar(max)" />
-          <Property Name="IsPaid" Type="bit" />
+          <Property Name="DeliveredDate" Type="datetime" />
+          <Property Name="Description" Type="nvarchar" MaxLength="1024" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="1024" />
         </EntityType>
         <EntityType Name="TaxSetting">
           <Key>
@@ -161,18 +146,6 @@
             </Principal>
             <Dependent Role="Customer">
               <PropertyRef Name="AreaCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Customer_CustomerType">
-          <End Role="CustomerType" Type="NetworkModel.Store.CustomerType" Multiplicity="1" />
-          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CustomerType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="CustomerTypeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -234,6 +207,7 @@
           <EntitySet Name="ComissionSettings" EntityType="NetworkModel.ComissionSetting" />
           <EntitySet Name="Customers" EntityType="NetworkModel.Customer" />
           <EntitySet Name="CustomerComissions" EntityType="NetworkModel.CustomerComission" />
+          <EntitySet Name="Orders" EntityType="NetworkModel.Order" />
           <EntitySet Name="TaxSettings" EntityType="NetworkModel.TaxSetting" />
           <EntitySet Name="Users" EntityType="NetworkModel.User" />
           <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.FK_Customer_Area">
@@ -252,12 +226,6 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="CustomerComission" EntitySet="CustomerComissions" />
           </AssociationSet>
-          <EntitySet Name="CustomerTypes" EntityType="NetworkModel.CustomerType" />
-          <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.FK_Customer_CustomerType">
-            <End Role="CustomerType" EntitySet="CustomerTypes" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <EntitySet Name="Orders" EntityType="NetworkModel.Order" />
           <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.FK_Order_Customer">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Order" EntitySet="Orders" />
@@ -324,9 +292,6 @@
           <NavigationProperty Name="User" Relationship="NetworkModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
           <NavigationProperty Name="CustomerComissions" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="Customer" ToRole="CustomerComission" />
           <NavigationProperty Name="CustomerComissions1" Relationship="NetworkModel.FK_CustomerComission_Order" FromRole="Customer" ToRole="CustomerComission" />
-          <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
-          <Property Type="DateTime" Name="MROrientationDate" Nullable="false" />
-          <NavigationProperty Name="CustomerType" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
           <NavigationProperty Name="Orders" Relationship="NetworkModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="CustomerComission">
@@ -341,6 +306,20 @@
           <Property Name="IsComissionPaid" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="CustomerComission" ToRole="Customer" />
           <NavigationProperty Name="Customer1" Relationship="NetworkModel.FK_CustomerComission_Order" FromRole="CustomerComission" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipID" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="1024" Unicode="false" FixedLength="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
+          <Property Name="DeliveredDate" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+          <Property Type="String" Name="Remarks" MaxLength="1024" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TaxSetting">
           <Key>
@@ -412,44 +391,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="CustomerType">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Customers" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
-        </EntityType>
-        <Association Name="FK_Customer_CustomerType">
-          <End Type="NetworkModel.CustomerType" Role="CustomerType" Multiplicity="1" />
-          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CustomerType">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Customer">
-              <PropertyRef Name="CustomerTypeID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderID" />
-          </Key>
-          <Property Type="Int32" Name="OrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="MembershipID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="Description" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
-          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-          <Property Type="Boolean" Name="IsDelivered" Nullable="false" />
-          <Property Type="DateTime" Name="DeliveredDate" Nullable="false" />
-          <Property Type="DateTime" Name="OrderDate" Nullable="false" />
-          <Property Type="String" Name="Remarks" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="IsPaid" />
-          <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-        </EntityType>
         <Association Name="FK_Order_Customer">
-          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="1" />
-          <End Type="NetworkModel.Order" Role="Order" Multiplicity="*" />
+          <End Role="Customer" Type="NetworkModel.Customer" Multiplicity="1" />
+          <End Role="Order" Type="NetworkModel.Order" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Customer">
               <PropertyRef Name="MembershipID" />
@@ -483,9 +427,7 @@
             <ScalarProperty Name="ComissionPercentage" ColumnName="ComissionPercentage" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="Customers"><EntityTypeMapping TypeName="NetworkModel.Customer"><MappingFragment StoreEntitySet="Customer">
-            <ScalarProperty Name="MROrientationDate" ColumnName="MROrientationDate" />
-                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
-                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+            <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
             <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
             <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
             <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
@@ -520,6 +462,16 @@
             <ScalarProperty Name="ComissionPaidDate" ColumnName="ComissionPaidDate" />
             <ScalarProperty Name="IsComissionPaid" ColumnName="IsComissionPaid" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="NetworkModel.Order"><MappingFragment StoreEntitySet="Order">
+            <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Amount" ColumnName="Amount" />
+            <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+            <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
           <EntitySetMapping Name="TaxSettings"><EntityTypeMapping TypeName="NetworkModel.TaxSetting"><MappingFragment StoreEntitySet="TaxSetting">
             <ScalarProperty Name="TaxID" ColumnName="TaxID" />
             <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
@@ -535,29 +487,6 @@
             <ScalarProperty Name="Designation" ColumnName="Designation" />
             <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
-          <EntitySetMapping Name="CustomerTypes">
-            <EntityTypeMapping TypeName="NetworkModel.CustomerType">
-              <MappingFragment StoreEntitySet="CustomerType">
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="NetworkModel.Order">
-              <MappingFragment StoreEntitySet="Order">
-                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
-                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
-                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
-                <ScalarProperty Name="Amount" ColumnName="Amount" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
-                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -578,12 +507,13 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="DBModal" ZoomLevel="64">
+      <Diagram Name="DBModal" ZoomLevel="87">
         <EntityTypeShape EntityType="NetworkModel.Area" Width="1.5" PointX="0.75" PointY="5.375" Height="1.5956835937499996" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.Bonu" Width="1.5" PointX="7.75" PointY="2.25" Height="1.9802864583333335" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.ComissionSetting" Width="1.5" PointX="7.75" PointY="5.25" Height="1.7879850260416665" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.Customer" Width="1.5" PointX="3" PointY="2.75" Height="6.9801236979166665" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.CustomerComission" Width="1.5" PointX="5.25" PointY="3.375" Height="2.5571907552083331" IsExpanded="true" />
+        <EntityTypeShape EntityType="NetworkModel.Order" Width="1.5" PointX="5.25" PointY="6.75" Height="2.3648893229166665" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.TaxSetting" Width="1.5" PointX="7.75" PointY="8.25" Height="1.4033821614583317" IsExpanded="true" />
         <EntityTypeShape EntityType="NetworkModel.User" Width="1.5" PointX="0.75" PointY="0.75" Height="2.9417936197916674" IsExpanded="true" />
         <AssociationConnector Association="NetworkModel.FK_Customer_Area" ManuallyRouted="false">
@@ -595,23 +525,16 @@
           <ConnectorPoint PointX="3" PointY="3.2208968098958337" />
         </AssociationConnector>
         <AssociationConnector Association="NetworkModel.FK_CustomerComission_CustomerComission" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="5.1141501108805336" />
-          <ConnectorPoint PointX="5.25" PointY="5.1141501108805336" />
+          <ConnectorPoint PointX="4.5" PointY="4.6535953776041667" />
+          <ConnectorPoint PointX="5.25" PointY="4.6535953776041667" />
         </AssociationConnector>
         <AssociationConnector Association="NetworkModel.FK_CustomerComission_Order" ManuallyRouted="false">
-          <ConnectorPoint PointX="4.5" PointY="4.1820750554402668" />
-          <ConnectorPoint PointX="5.25" PointY="4.1820750554402668" />
+          <ConnectorPoint PointX="4.5" PointY="3.9517976888020838" />
+          <ConnectorPoint PointX="5.25" PointY="3.9517976888020838" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="NetworkModel.CustomerType" Width="1.5" PointX="10.375" PointY="0.875" Height="1.5956835937499996" />
-        <AssociationConnector Association="NetworkModel.FK_Customer_CustomerType" >
-          <ConnectorPoint PointX="10.375" PointY="1.53125" />
-          <ConnectorPoint PointX="3.75" PointY="1.53125" />
-          <ConnectorPoint PointX="3.75" PointY="2.75" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="NetworkModel.Order" Width="1.5" PointX="5.25" PointY="7" Height="2.9417936197916674" />
-        <AssociationConnector Association="NetworkModel.FK_Order_Customer" >
-          <ConnectorPoint PointX="4.5" PointY="8.4708968098958337" />
-          <ConnectorPoint PointX="5.25" PointY="8.4708968098958337" />
+        <AssociationConnector Association="NetworkModel.FK_Order_Customer" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="7.9324446614583337" />
+          <ConnectorPoint PointX="5.25" PointY="7.9324446614583337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

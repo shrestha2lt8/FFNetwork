@@ -5,8 +5,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FF(Network)", "FF(Network).
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFModal", "..\FFModal\FFModal\FFModal.csproj", "{72721AEA-398C-4F74-AC97-449ABA0DE7DD}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "..\Setup\Setup.vdproj", "{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,12 +35,6 @@ Global
 		{72721AEA-398C-4F74-AC97-449ABA0DE7DD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{72721AEA-398C-4F74-AC97-449ABA0DE7DD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{72721AEA-398C-4F74-AC97-449ABA0DE7DD}.Release|x86.ActiveCfg = Release|Any CPU
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Debug|Any CPU.ActiveCfg = Debug
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Debug|Mixed Platforms.ActiveCfg = Debug
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Debug|x86.ActiveCfg = Debug
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Release|Any CPU.ActiveCfg = Release
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Release|Mixed Platforms.ActiveCfg = Release
-		{DE4E61C8-9074-4A68-9634-39CF6EA3DBA7}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

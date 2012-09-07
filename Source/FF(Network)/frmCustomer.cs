@@ -25,7 +25,7 @@ namespace FF_Network_
         #region "Form Event"
 
         /// <summary>
-        /// Keydown event of customer form
+        /// Keydown event of  customer form
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -36,7 +36,7 @@ namespace FF_Network_
                 this.Close();
             }
         }
-
+ 
         /// <summary>
         /// Form load event
         /// </summary>
@@ -45,17 +45,9 @@ namespace FF_Network_
         private void frmCustomer_Load(object sender, EventArgs e)
         {
             this.Tag = "Nav";
-            //btnFirst.Visible = false;
-            //btnPrevious.Visible = false;
-            //btnNext.Visible = false;
-            //btnLast.Visible = false;
-            dateTimePickerCreatedDate.Value = DateTime.Today;
-            dateTimePickerDOB.Value = DateTime.Today;
-            txtMembershipID.Enabled = false;
-            btnMembershipID.Enabled = false;
             entryControlStatus(false);
             buttonStatus(true);
-            lstCustomer = CustomerController.GetAll();
+            //lstCustomer = CustomerController.GetAll();
         }
 
         #endregion
@@ -71,10 +63,8 @@ namespace FF_Network_
         {
             clearControls();
             this.Tag = "Add";
-            txtMembershipID.Text = "";
             entryControlStatus(true);
             buttonStatus(false);
-            txtMembershipID.Enabled = false;
         }
 
         /// <summary>
@@ -84,8 +74,7 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnEdit_Click_1(object sender, EventArgs e)
         {
-            txtMembershipID.Enabled = true;
-            btnMembershipID.Enabled = true;
+            clearControls();
             entryControlStatus(true);
             buttonStatus(false);
             this.Tag = "Edit";
@@ -98,37 +87,11 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (txtMembershipID.Text.Trim() == "")
-            {
-                MessageBox.Show("Membership Id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtMembershipID.Focus();
-                return;
-            }
-            else
-            {
-                CustomerController.Delete(txtMembershipID.Text);
-                lstCustomer = CustomerController.GetAll();
-                pCurrentRow = 0;
-                navigation(pCurrentRow);
-            }
+
         }
 
         /// <summary>
-        /// MembershipID button click event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnMembershipID_Click(object sender, EventArgs e)
-        {
-            frmLookup frmLookup = new frmLookup();
-            frmLookup.lookupType = LookupType.Customer;
-            frmLookup.ShowDialog();
-            txtMembershipID.Text = frmLookup.returnField1;
-            txtMembershipID.Focus();
-        }
-
-        /// <summary>
-        /// Dump1 button click event
+        /// Dump button click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -142,7 +105,7 @@ namespace FF_Network_
         }
 
         /// <summary>
-        /// Dump2 button click event
+        /// Dump button click event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -151,24 +114,10 @@ namespace FF_Network_
             frmLookup frmLookup = new frmLookup();
             frmLookup.lookupType = LookupType.Customer;
             frmLookup.ShowDialog();
-            //txtIntroducerID.Text = frmLookup.returnField1;
-            //txtIntroducerID.Focus();
+            txtIntroducerID.Text = frmLookup.returnField1;
+            txtIntroducerID.Focus();
             txtReferenceID.Text = frmLookup.returnField1;
             txtReferenceID.Focus();
-        }
-
-        /// <summary>
-        /// Dump3 button click event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnDump3_Click(object sender, EventArgs e)
-        {
-            frmLookup frmLookup = new frmLookup();
-            frmLookup.lookupType = LookupType.Area;
-            frmLookup.ShowDialog();
-            txtAreaCode.Text = frmLookup.returnField1;
-            txtAreaCode.Focus();
         }
 
         /// <summary>
@@ -182,24 +131,24 @@ namespace FF_Network_
             //Validation
             //---------------------------------------------------------------------------------------------------------------------
 
-            //if (txtIntroducerID.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("Introducer id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txtIntroducerID.Focus();
-            //    return;
-            //}
+            if (txtIntroducerID.Text.Trim() == "")
+            {
+                MessageBox.Show("Introducer id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtIntroducerID.Focus();
+                return;
+            }
 
-            //if (txtReferenceID.Text.Trim() == "")
-            //{
-            //    MessageBox.Show("Reference id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //    txtReferenceID.Focus();
-            //    return;
-            //}
+            if (txtReferenceID.Text.Trim() == "")
+            {
+                MessageBox.Show("Reference id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txtReferenceID.Focus();
+                return;
+            }
 
-            if (dateTimePickerCreatedDate.Text.Trim() == "")
+            if (dateTimePickerCreateddate.Text.Trim() == "")
             {
                 MessageBox.Show("Created date cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                dateTimePickerCreatedDate.Focus();
+                dateTimePickerCreateddate.Focus();
                 return;
             }
 
@@ -313,23 +262,19 @@ namespace FF_Network_
             if (this.Tag.ToString() == "Add")
             {
                 txtMembershipID.Text = CustomerController.GetNextMembershipId(txtAreaCode.Text);
-                CustomerController.Add(txtMembershipID.Text, txtIntroducerID.Text, txtReferenceID.Text, txtCustomerName.Text, txtBenificiaryName.Text, ddlGender.Text,
+                CustomerController.Add( txtMembershipID.Text , txtIntroducerID.Text, txtReferenceID.Text, txtCustomerName.Text, txtBenificiaryName.Text, ddlGender.Text,
                     dateTimePickerDOB.Value, DateTime.Now, Utility.AdminUserId, ddlMaritialStatus.Text, "Nepal", txtCitizenshipID.Text,
                     txtLicenseID.Text, txtPassportID.Text, ddlCountry.Text, ddlCity.Text, ddlMunicipality.Text, ddlDistrict.Text,
-                    txtStreet.Text, txtHouseNo.Text, txtAreaCode.Text, txtAddress.Text, txtHomeTelephone.Text, txtMobileNo.Text, txtEmailAddress.Text, Utility.GetPhotoByte(txtPhotoPath.Text));
+                    txtStreet.Text, txtHouseNo.Text, txtAreaCode.Text, txtAddress.Text, txtHomeTelephone.Text, txtMobileNo.Text,txtEmailAddress.Text,Utility.GetPhotoByte( txtPhotoPath.Text));
 
             }
             else if (this.Tag.ToString() == "Edit")
             {
                 CustomerController.Edit(txtMembershipID.Text, txtIntroducerID.Text, txtReferenceID.Text, txtCustomerName.Text, txtBenificiaryName.Text, ddlGender.Text,
-                        dateTimePickerDOB.Value, DateTime.Now, Utility.AdminUserId, ddlMaritialStatus.Text, "Nepal", txtCitizenshipID.Text,
-                         txtLicenseID.Text, txtPassportID.Text, ddlCountry.Text, ddlCity.Text, ddlMunicipality.Text, ddlDistrict.Text,
-                         txtStreet.Text, txtHouseNo.Text, txtAreaCode.Text, txtAddress.Text, txtHomeTelephone.Text, txtMobileNo.Text, txtEmailAddress.Text, Utility.GetPhotoByte(txtPhotoPath.Text));
+                          dateTimePickerDOB.Value, DateTime.Now, Utility.AdminUserId, ddlMaritialStatus.Text, "Nepal", txtCitizenshipID.Text,
+                          txtLicenseID.Text, txtPassportID.Text, ddlCountry.Text, ddlCity.Text, ddlMunicipality.Text, ddlDistrict.Text,
+                          txtStreet.Text, txtHouseNo.Text, txtAreaCode.Text, txtAddress.Text, txtHomeTelephone.Text, txtMobileNo.Text, txtEmailAddress.Text, Utility.GetPhotoByte(txtPhotoPath.Text));
             }
-            this.Tag = "Nav";
-            entryControlStatus(false);
-            buttonStatus(true);
-            lstCustomer = CustomerController.GetAll();
 
             //---------------------------------------------------------------------------------------------------------------------
             //---------------------------------------------------------------------------------------------------------------------
@@ -357,7 +302,7 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnBrowsePhoto_Click(object sender, EventArgs e)
         {
-
+            
             try
             {
                 // open file dialog
@@ -378,7 +323,7 @@ namespace FF_Network_
             {
                 throw new ApplicationException("Image loading error....");
             }
-
+            
         }
 
         /// <summary>
@@ -412,16 +357,15 @@ namespace FF_Network_
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dateTimePickerCreatedDate_ValueChanged(object sender, EventArgs e)
+        private void dateTimePickerCreateddate_ValueChanged(object sender, EventArgs e)
         {
 
-            if (dateTimePickerCreatedDate.Value < DateTime.Today)
+            if (dateTimePickerCreateddate.Value < DateTime.Today)
             {
                 MessageBox.Show("Created date should not be greater than to date");
-                dateTimePickerCreatedDate.Value = DateTime.Today;
+                dateTimePickerCreateddate.Value = DateTime.Today;
             }
         }
-
 
         /// <summary>
         /// Validation of gender dropdown
@@ -563,7 +507,7 @@ namespace FF_Network_
         {
             if (pCurrentRow > 0)
             {
-                pCurrentRow = pCurrentRow - 1;
+                pCurrentRow = pCurrentRow-1;
                 navigation(pCurrentRow);
             }
         }
@@ -593,24 +537,8 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void btnLast_Click(object sender, EventArgs e)
         {
-            pCurrentRow = lstCustomer.Count - 1;
+            pCurrentRow = lstCustomer.Count-1;
             navigation(pCurrentRow);
-        }
-
-        /// <summary>
-        /// Keydown event for txtMembershipID textbox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtMembershipID_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                btnCancel_Click(null, null);
-            else if (e.KeyCode == Keys.F1)
-            {
-                if (this.Tag.ToString() != "Add")
-                    btnMembershipID_Click(null, null);
-            }
         }
 
         /// <summary>
@@ -623,10 +551,7 @@ namespace FF_Network_
             if (e.KeyCode == Keys.Escape)
                 btnCancel_Click(null, null);
             else if (e.KeyCode == Keys.F1)
-            {
-                if (this.Tag.ToString() != "Add")
-                    btnDump1_Click(null, null);
-            }
+                btnDump1_Click(null, null);
         }
 
         /// <summary>
@@ -636,31 +561,12 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void txtReferenceID_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.KeyCode == Keys.Escape)
                 btnCancel_Click(null, null);
             else if (e.KeyCode == Keys.F1)
-            {
-                if (this.Tag.ToString() != "Add")
-                    btnDump2_Click(null, null);
-            }
+                btnDump2_Click(null, null);
         }
 
-        /// <summary>
-        /// Keydown event for txtAreaCode textbox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtAreaCode_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Escape)
-                btnCancel_Click(null, null);
-            else if (e.KeyCode == Keys.F1)
-            {
-                if (this.Tag.ToString() != "Add")
-                    btnDump3_Click(null, null);
-            }
-        }
 
         #endregion
 
@@ -686,16 +592,15 @@ namespace FF_Network_
         /// <param name="pState"></param>
         private void entryControlStatus(bool pState)
         {
-            txtMembershipID.Enabled = pState;
             txtIntroducerID.Enabled = pState;
             btnDump1.Enabled = pState;
             txtReferenceID.Enabled = pState;
             btnDump2.Enabled = pState;
-            dateTimePickerCreatedDate.Enabled = pState;
+            dateTimePickerCreateddate.Enabled = pState;
             txtCustomerName.Enabled = pState;
             txtBenificiaryName.Enabled = pState;
             ddlGender.Enabled = pState;
-            dateTimePickerDOB.Enabled = pState;
+            dateTimePickerDOB.Enabled=pState;
             ddlMaritialStatus.Enabled = pState;
             ddlNationality.Enabled = pState;
             txtCitizenshipID.Enabled = pState;
@@ -708,7 +613,6 @@ namespace FF_Network_
             txtStreet.Enabled = pState;
             txtHouseNo.Enabled = pState;
             txtAreaCode.Enabled = pState;
-            btnDump3.Enabled = pState;
             txtAddress.Enabled = pState;
             txtHomeTelephone.Enabled = pState;
             txtMobileNo.Enabled = pState;
@@ -740,13 +644,6 @@ namespace FF_Network_
             txtHomeTelephone.Text = "";
             txtMobileNo.Text = "";
             txtEmailAddress.Text = "";
-            ddlCity.SelectedIndex = 0;
-            ddlCountry.SelectedIndex = 0;
-            ddlDistrict.SelectedIndex = 0;
-            ddlGender.SelectedIndex = 0;
-            ddlMaritialStatus.SelectedIndex = 0;
-            ddlMunicipality.SelectedIndex = 0;
-            ddlNationality.SelectedIndex = 0;
         }
 
         private void navigation(int pRowIndex)
@@ -755,31 +652,8 @@ namespace FF_Network_
             {
                 if (pRowIndex >= 0 && pRowIndex < lstCustomer.Count)
                 {
-                    txtMembershipID.Text = lstCustomer[pRowIndex].MembershipID;
                     txtIntroducerID.Text = lstCustomer[pRowIndex].IntroducerID;
                     txtReferenceID.Text = lstCustomer[pRowIndex].ReferenceID;
-                    dateTimePickerCreatedDate.Value = lstCustomer[pRowIndex].CreatedDate;
-                    txtCustomerName.Text = lstCustomer[pRowIndex].CustomerName;
-                    txtBenificiaryName.Text = lstCustomer[pRowIndex].BenificiaryName;
-                    ddlGender.Text = lstCustomer[pRowIndex].Gender;
-                    dateTimePickerDOB.Value = lstCustomer[pRowIndex].DateOfBirth;
-                    ddlMaritialStatus.Text = lstCustomer[pRowIndex].MaratialStatus;
-                    ddlNationality.Text = lstCustomer[pRowIndex].Nationality;
-                    txtCitizenshipID.Text = lstCustomer[pRowIndex].CitizenshipID;
-                    txtLicenseID.Text = lstCustomer[pRowIndex].LicenseID;
-                    txtPassportID.Text = lstCustomer[pRowIndex].PassportID;
-                    ddlCountry.Text = lstCustomer[pRowIndex].Country;
-                    ddlCity.Text = lstCustomer[pRowIndex].City;
-                    ddlMunicipality.Text = lstCustomer[pRowIndex].Municipality;
-                    ddlDistrict.Text = lstCustomer[pRowIndex].District;
-                    txtStreet.Text = lstCustomer[pRowIndex].Street;
-                    txtHouseNo.Text= lstCustomer[pRowIndex].HomeNumber;
-                    txtAreaCode.Text = lstCustomer[pRowIndex].AreaCode;
-                    txtAddress.Text = lstCustomer[pRowIndex].Address;
-                    txtHomeTelephone.Text = lstCustomer[pRowIndex].HomeTelephone;
-                    txtMobileNo.Text = lstCustomer[pRowIndex].Mobile;
-                    txtEmailAddress.Text = lstCustomer[pRowIndex].EmailAddress;
-
                 }
             }
             else
