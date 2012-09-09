@@ -14,6 +14,7 @@ using System.Data.EntityClient;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -1837,6 +1838,7 @@ namespace FFModal
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        [Required]
         public global::System.String MembershipID
         {
             get
@@ -1885,6 +1887,7 @@ namespace FFModal
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        [RegularExpression(@"^[0-9]([\.\,][0-9]{1,3})?$")]
         public global::System.Decimal Amount
         {
             get
@@ -1957,6 +1960,7 @@ namespace FFModal
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
+        [Required]
         public global::System.DateTime OrderDate
         {
             get
