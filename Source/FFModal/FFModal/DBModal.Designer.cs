@@ -23,6 +23,7 @@ using System.Runtime.Serialization;
 [assembly: EdmRelationshipAttribute("NetworkModel", "FK_CustomerComission_CustomerComission", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
 [assembly: EdmRelationshipAttribute("NetworkModel", "FK_CustomerComission_Order", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "CustomerComission", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.CustomerComission), true)]
 [assembly: EdmRelationshipAttribute("NetworkModel", "FK_Order_Customer", "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.Customer), "Order", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Order), true)]
+[assembly: EdmRelationshipAttribute("NetworkModel", "FK_Customer_CustomerType", "CustomerType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(FFModal.CustomerType), "Customer", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(FFModal.Customer), true)]
 
 #endregion
 
@@ -201,6 +202,22 @@ namespace FFModal
             }
         }
         private ObjectSet<User> _Users;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<CustomerType> CustomerTypes
+        {
+            get
+            {
+                if ((_CustomerTypes == null))
+                {
+                    _CustomerTypes = base.CreateObjectSet<CustomerType>("CustomerTypes");
+                }
+                return _CustomerTypes;
+            }
+        }
+        private ObjectSet<CustomerType> _CustomerTypes;
 
         #endregion
         #region AddTo Methods
@@ -267,6 +284,14 @@ namespace FFModal
         public void AddToUsers(User user)
         {
             base.AddObject("Users", user);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the CustomerTypes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToCustomerTypes(CustomerType customerType)
+        {
+            base.AddObject("CustomerTypes", customerType);
         }
 
         #endregion
@@ -703,7 +728,9 @@ namespace FFModal
         /// <param name="areaCode">Initial value of the AreaCode property.</param>
         /// <param name="homeNumber">Initial value of the HomeNumber property.</param>
         /// <param name="address">Initial value of the Address property.</param>
-        public static Customer CreateCustomer(global::System.String membershipID, global::System.String introducerID, global::System.String referenceID, global::System.String customerName, global::System.String gender, global::System.DateTime dateOfBirth, global::System.DateTime createdDate, global::System.Int32 createdBy, global::System.String nationality, global::System.String country, global::System.String city, global::System.String municipality, global::System.String district, global::System.String street, global::System.String areaCode, global::System.String homeNumber, global::System.String address)
+        /// <param name="customerTypeID">Initial value of the CustomerTypeID property.</param>
+        /// <param name="mROrientationDate">Initial value of the MROrientationDate property.</param>
+        public static Customer CreateCustomer(global::System.String membershipID, global::System.String introducerID, global::System.String referenceID, global::System.String customerName, global::System.String gender, global::System.DateTime dateOfBirth, global::System.DateTime createdDate, global::System.Int32 createdBy, global::System.String nationality, global::System.String country, global::System.String city, global::System.String municipality, global::System.String district, global::System.String street, global::System.String areaCode, global::System.String homeNumber, global::System.String address, global::System.Int32 customerTypeID, global::System.DateTime mROrientationDate)
         {
             Customer customer = new Customer();
             customer.MembershipID = membershipID;
@@ -723,6 +750,8 @@ namespace FFModal
             customer.AreaCode = areaCode;
             customer.HomeNumber = homeNumber;
             customer.Address = address;
+            customer.CustomerTypeID = customerTypeID;
+            customer.MROrientationDate = mROrientationDate;
             return customer;
         }
 
@@ -1355,6 +1384,54 @@ namespace FFModal
         private global::System.Byte[] _Photo;
         partial void OnPhotoChanging(global::System.Byte[] value);
         partial void OnPhotoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 CustomerTypeID
+        {
+            get
+            {
+                return _CustomerTypeID;
+            }
+            set
+            {
+                OnCustomerTypeIDChanging(value);
+                ReportPropertyChanging("CustomerTypeID");
+                _CustomerTypeID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CustomerTypeID");
+                OnCustomerTypeIDChanged();
+            }
+        }
+        private global::System.Int32 _CustomerTypeID;
+        partial void OnCustomerTypeIDChanging(global::System.Int32 value);
+        partial void OnCustomerTypeIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime MROrientationDate
+        {
+            get
+            {
+                return _MROrientationDate;
+            }
+            set
+            {
+                OnMROrientationDateChanging(value);
+                ReportPropertyChanging("MROrientationDate");
+                _MROrientationDate = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("MROrientationDate");
+                OnMROrientationDateChanged();
+            }
+        }
+        private global::System.DateTime _MROrientationDate;
+        partial void OnMROrientationDateChanging(global::System.DateTime value);
+        partial void OnMROrientationDateChanged();
 
         #endregion
     
@@ -1498,6 +1575,44 @@ namespace FFModal
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Order>("NetworkModel.FK_Order_Customer", "Order", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_CustomerType", "CustomerType")]
+        public CustomerType CustomerType
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerType>("NetworkModel.FK_Customer_CustomerType", "CustomerType").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerType>("NetworkModel.FK_Customer_CustomerType", "CustomerType").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<CustomerType> CustomerTypeReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<CustomerType>("NetworkModel.FK_Customer_CustomerType", "CustomerType");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<CustomerType>("NetworkModel.FK_Customer_CustomerType", "CustomerType", value);
                 }
             }
         }
@@ -1772,6 +1887,112 @@ namespace FFModal
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="CustomerType")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class CustomerType : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new CustomerType object.
+        /// </summary>
+        /// <param name="id">Initial value of the ID property.</param>
+        /// <param name="name">Initial value of the Name property.</param>
+        public static CustomerType CreateCustomerType(global::System.Int32 id, global::System.String name)
+        {
+            CustomerType customerType = new CustomerType();
+            customerType.ID = id;
+            customerType.Name = name;
+            return customerType;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 ID
+        {
+            get
+            {
+                return _ID;
+            }
+            set
+            {
+                if (_ID != value)
+                {
+                    OnIDChanging(value);
+                    ReportPropertyChanging("ID");
+                    _ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ID");
+                    OnIDChanged();
+                }
+            }
+        }
+        private global::System.Int32 _ID;
+        partial void OnIDChanging(global::System.Int32 value);
+        partial void OnIDChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("NetworkModel", "FK_Customer_CustomerType", "Customer")]
+        public EntityCollection<Customer> Customers
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Customer>("NetworkModel.FK_Customer_CustomerType", "Customer");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Customer>("NetworkModel.FK_Customer_CustomerType", "Customer", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="NetworkModel", Name="Order")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -1931,9 +2152,9 @@ namespace FFModal
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> DeliveredDate
+        public global::System.DateTime DeliveredDate
         {
             get
             {
@@ -1948,8 +2169,8 @@ namespace FFModal
                 OnDeliveredDateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _DeliveredDate;
-        partial void OnDeliveredDateChanging(Nullable<global::System.DateTime> value);
+        private global::System.DateTime _DeliveredDate;
+        partial void OnDeliveredDateChanging(global::System.DateTime value);
         partial void OnDeliveredDateChanged();
     
         /// <summary>
@@ -1999,6 +2220,30 @@ namespace FFModal
         private global::System.String _Remarks;
         partial void OnRemarksChanging(global::System.String value);
         partial void OnRemarksChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> IsPaid
+        {
+            get
+            {
+                return _IsPaid;
+            }
+            set
+            {
+                OnIsPaidChanging(value);
+                ReportPropertyChanging("IsPaid");
+                _IsPaid = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IsPaid");
+                OnIsPaidChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _IsPaid;
+        partial void OnIsPaidChanging(Nullable<global::System.Boolean> value);
+        partial void OnIsPaidChanged();
 
         #endregion
     

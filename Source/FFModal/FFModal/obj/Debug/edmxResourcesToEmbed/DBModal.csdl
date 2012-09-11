@@ -6,6 +6,7 @@
     <EntitySet Name="ComissionSettings" EntityType="NetworkModel.ComissionSetting" />
     <EntitySet Name="Customers" EntityType="NetworkModel.Customer" />
     <EntitySet Name="CustomerComissions" EntityType="NetworkModel.CustomerComission" />
+    <EntitySet Name="Orders" EntityType="NetworkModel.Order" />
     <EntitySet Name="TaxSettings" EntityType="NetworkModel.TaxSetting" />
     <EntitySet Name="Users" EntityType="NetworkModel.User" />
     <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.FK_Customer_Area">
@@ -24,15 +25,14 @@
       <End Role="Customer" EntitySet="Customers" />
       <End Role="CustomerComission" EntitySet="CustomerComissions" />
     </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
     <EntitySet Name="CustomerTypes" EntityType="NetworkModel.CustomerType" />
     <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.FK_Customer_CustomerType">
       <End Role="CustomerType" EntitySet="CustomerTypes" />
       <End Role="Customer" EntitySet="Customers" />
-    </AssociationSet>
-    <EntitySet Name="Orders" EntityType="NetworkModel.Order" />
-    <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.FK_Order_Customer">
-      <End Role="Customer" EntitySet="Customers" />
-      <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Area">
@@ -96,10 +96,10 @@
     <NavigationProperty Name="User" Relationship="NetworkModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
     <NavigationProperty Name="CustomerComissions" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="Customer" ToRole="CustomerComission" />
     <NavigationProperty Name="CustomerComissions1" Relationship="NetworkModel.FK_CustomerComission_Order" FromRole="Customer" ToRole="CustomerComission" />
+    <NavigationProperty Name="Orders" Relationship="NetworkModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
     <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
     <Property Type="DateTime" Name="MROrientationDate" Nullable="false" />
     <NavigationProperty Name="CustomerType" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
-    <NavigationProperty Name="Orders" Relationship="NetworkModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
   </EntityType>
   <EntityType Name="CustomerComission">
     <Key>
@@ -113,6 +113,21 @@
     <Property Name="IsComissionPaid" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="CustomerComission" ToRole="Customer" />
     <NavigationProperty Name="Customer1" Relationship="NetworkModel.FK_CustomerComission_Order" FromRole="CustomerComission" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MembershipID" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="1024" Unicode="false" FixedLength="false" />
+    <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IsDelivered" Type="Boolean" Nullable="false" />
+    <Property Name="DeliveredDate" Type="DateTime" Nullable="false" />
+    <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+    <Property Type="String" Name="Remarks" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsPaid" />
   </EntityType>
   <EntityType Name="TaxSetting">
     <Key>
@@ -184,6 +199,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="NetworkModel.Customer" Multiplicity="1" />
+    <End Role="Order" Type="NetworkModel.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="MembershipID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="CustomerType">
     <Key>
       <PropertyRef Name="ID" />
@@ -201,33 +228,6 @@
       </Principal>
       <Dependent Role="Customer">
         <PropertyRef Name="CustomerTypeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Order">
-    <Key>
-      <PropertyRef Name="OrderID" />
-    </Key>
-    <Property Type="Int32" Name="OrderID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Type="String" Name="MembershipID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Type="String" Name="Description" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
-    <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
-    <Property Type="Boolean" Name="IsDelivered" Nullable="false" />
-    <Property Type="DateTime" Name="DeliveredDate" Nullable="false" />
-    <Property Type="DateTime" Name="OrderDate" Nullable="false" />
-    <Property Type="String" Name="Remarks" MaxLength="Max" FixedLength="false" Unicode="false" />
-    <Property Type="Boolean" Name="IsPaid" />
-    <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
-  </EntityType>
-  <Association Name="FK_Order_Customer">
-    <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="1" />
-    <End Type="NetworkModel.Order" Role="Order" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Customer">
-        <PropertyRef Name="MembershipID" />
-      </Principal>
-      <Dependent Role="Order">
-        <PropertyRef Name="MembershipID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
