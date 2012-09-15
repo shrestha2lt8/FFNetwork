@@ -99,21 +99,21 @@
             // areaToolStripMenuItem
             // 
             this.areaToolStripMenuItem.Name = "areaToolStripMenuItem";
-            this.areaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.areaToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.areaToolStripMenuItem.Text = "Area";
             this.areaToolStripMenuItem.Click += new System.EventHandler(this.areaToolStripMenuItem_Click);
             // 
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.customerToolStripMenuItem.Text = "Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.orderToolStripMenuItem.Text = "Order";
             this.orderToolStripMenuItem.Click += new System.EventHandler(this.orderToolStripMenuItem_Click);
             // 
@@ -186,7 +186,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmMain";
-            this.Text = "Main";
+            this.Text = "FF Trade";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.menuStrip1.ResumeLayout(false);
