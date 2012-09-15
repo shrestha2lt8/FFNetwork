@@ -67,6 +67,7 @@ namespace FF_Network_
             clearControls();
             this.Tag = "Add";
             entryControlStatus(true);
+            this.Text = "FF: Area - Add";
             buttonStatus(false);
         }
 
@@ -81,6 +82,7 @@ namespace FF_Network_
             entryControlStatus(true);
             buttonStatus(false);
             this.Tag = "Edit";
+            this.Text = "FF: Area - Edit";
         }
 
         /// <summary>
@@ -187,6 +189,7 @@ namespace FF_Network_
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Tag = "Nav";
+            this.Text = "FF: Area";
             entryControlStatus(false);
             buttonStatus(true);
         }

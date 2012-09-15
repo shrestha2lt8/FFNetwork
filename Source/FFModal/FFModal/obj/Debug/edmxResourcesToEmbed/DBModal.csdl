@@ -29,6 +29,11 @@
       <End Role="Customer" EntitySet="Customers" />
       <End Role="Order" EntitySet="Orders" />
     </AssociationSet>
+    <EntitySet Name="CustomerTypes" EntityType="NetworkModel.CustomerType" />
+    <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.FK_Customer_CustomerType">
+      <End Role="CustomerType" EntitySet="CustomerTypes" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="Area">
     <Key>
@@ -92,6 +97,9 @@
     <NavigationProperty Name="CustomerComissions" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="Customer" ToRole="CustomerComission" />
     <NavigationProperty Name="CustomerComissions1" Relationship="NetworkModel.FK_CustomerComission_Order" FromRole="Customer" ToRole="CustomerComission" />
     <NavigationProperty Name="Orders" Relationship="NetworkModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+    <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
+    <Property Type="DateTime" Name="MROrientationDate" Nullable="false" />
+    <NavigationProperty Name="CustomerType" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
   </EntityType>
   <EntityType Name="CustomerComission">
     <Key>
@@ -119,6 +127,7 @@
     <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
     <Property Type="DateTime" Name="OrderDate" Nullable="false" />
     <Property Type="String" Name="Remarks" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsPaid" />
   </EntityType>
   <EntityType Name="TaxSetting">
     <Key>
@@ -199,6 +208,26 @@
       </Principal>
       <Dependent Role="Order">
         <PropertyRef Name="MembershipID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CustomerType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Customers" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
+  </EntityType>
+  <Association Name="FK_Customer_CustomerType">
+    <End Type="NetworkModel.CustomerType" Role="CustomerType" Multiplicity="1" />
+    <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CustomerType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Customer">
+        <PropertyRef Name="CustomerTypeID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

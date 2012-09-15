@@ -133,8 +133,11 @@ namespace FFModal.Controller
 
                 if (!string.IsNullOrEmpty(pDeliveredDate))
                     objOrder.DeliveredDate = Convert.ToDateTime(pDeliveredDate);
+<<<<<<< HEAD
                 else
                     objOrder.DeliveredDate = null;
+=======
+>>>>>>> 6dc7c6080a2d25b3bcc797e8c899433bf472b43c
 
                 context.SaveChanges();
                 return true;

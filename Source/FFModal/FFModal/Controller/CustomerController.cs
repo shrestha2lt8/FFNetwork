@@ -36,12 +36,15 @@ namespace FFModal.Controller
         /// <param name="pMobile"></param>
         /// <param name="pEmailAddress"></param>
         /// <param name="pPhoto"></param>
+        /// <param name="pCustomerTypeID"></param>
+        /// <param name="pMROrientationDate"></param>
+ 
         /// <returns></returns>
         public static bool Add(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, 
             String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy,
             String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, 
             String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber,
-            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto)
+            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto, Int32 pCustomerTypeID, DateTime pMROrientationDate)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
@@ -75,6 +78,8 @@ namespace FFModal.Controller
                     objCustomer.Photo =pPhoto;
                 }
                 objCustomer.CreatedBy = pCreatedBy;
+                objCustomer.CustomerTypeID = pCustomerTypeID;
+                objCustomer.MROrientationDate = pMROrientationDate;
                 context.Customers.AddObject(objCustomer);
                 context.SaveChanges();
             }
@@ -110,12 +115,14 @@ namespace FFModal.Controller
         /// <param name="pMobile"></param>
         /// <param name="pEmailAddress"></param>
         /// <param name="pPhoto"></param>
+        /// <param name="pCustomerRypeID"></param>
+        /// <param name="pMROrientationDate"></param>
         /// <returns></returns>
         public static bool Edit(String pMembershipID, String pIntroducerID, String pReferenceID, String pCustomerName, 
             String pBenificiaryName, String pGender, DateTime pDateOfBirth, DateTime pCreatedDate, Int32 pCreatedBy,
             String pMaratialStatus, String pNationality, String pCitizenshipID, String pLicenseID, String pPassportID, 
             String pCountry, String pCity, String pMunicipality, String pDistrict, String pStreet, String pHomeNumber,
-            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto)
+            String pAreaCode, String pAddress, String pHomeTelephone, String pMobile, String pEmailAddress, byte[] pPhoto, Int32 pCustomerTypeID, DateTime pMROrientationDate)
         {
             using (NetworkEntities context = new NetworkEntities())
             {
@@ -148,6 +155,8 @@ namespace FFModal.Controller
                     objCustomer.EmailAddress = pEmailAddress;
                     objCustomer.Photo = pPhoto;
                     objCustomer.CreatedBy = 1;
+                    objCustomer.CustomerTypeID = pCustomerTypeID;
+                    objCustomer.MROrientationDate = pMROrientationDate;
                     context.SaveChanges();
                 }
             }
@@ -214,12 +223,43 @@ namespace FFModal.Controller
                 List<FFModal.Customer> lstCustomers = query.ToList();
                 if (lstCustomers.Count>0)
                 {
-                    return Convert.ToDouble(lstCustomers [lstCustomers.Count-1].MembershipID.Replace(pAreaCode + "-", "")).ToString("00000");
+                    return pAreaCode + "-" +  (Convert.ToInt32(lstCustomers[lstCustomers.Count - 1].MembershipID.Replace(pAreaCode + "-", "")) + 1).ToString("00000");
                 }
                 else
                 {
                     return pAreaCode + "-" + rec.ToString("00000"); 
                 }
+            }
+        }
+
+        /// <summary>
+        /// Check given membershipid is valid or not
+        /// </summary>
+        /// <param name="pMembershipID"></param>
+        /// <returns></returns>
+        public static bool IsValidReferenceMemberID(string pMembershipID)
+        {
+            using (NetworkEntities context = new NetworkEntities())
+            {
+                var query = from c in context.Customers where c.ReferenceID==pMembershipID select c;
+                int maxNode = context.ComissionSettings.ToList()[0].MaxLevel;
+                if (maxNode <= context.Customers.Count())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        public static List<CustomerType> GetCustomerType()
+        {
+
+            using (NetworkEntities context = new NetworkEntities())
+            {
+                return context.CustomerTypes.ToList();
             }
 
         }

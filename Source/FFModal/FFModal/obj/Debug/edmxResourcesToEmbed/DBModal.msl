@@ -33,6 +33,8 @@
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="NetworkModel.Customer">
         <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="MROrientationDate" ColumnName="MROrientationDate" />
+          <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
           <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
           <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
           <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
@@ -77,6 +79,7 @@
     <EntitySetMapping Name="Orders">
       <EntityTypeMapping TypeName="NetworkModel.Order">
         <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
           <ScalarProperty Name="Remarks" ColumnName="Remarks" />
           <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
           <ScalarProperty Name="OrderID" ColumnName="OrderID" />
@@ -108,6 +111,14 @@
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Designation" ColumnName="Designation" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CustomerTypes">
+      <EntityTypeMapping TypeName="NetworkModel.CustomerType">
+        <MappingFragment StoreEntitySet="CustomerType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
