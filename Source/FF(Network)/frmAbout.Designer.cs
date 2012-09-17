@@ -110,7 +110,7 @@
             this.labelCopyright.Name = "labelCopyright";
             this.labelCopyright.Size = new System.Drawing.Size(271, 17);
             this.labelCopyright.TabIndex = 21;
-            this.labelCopyright.Text = "Copyright @ 2012";
+            this.labelCopyright.Text = "Copyright @RSN 2012";
             this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelCompanyName

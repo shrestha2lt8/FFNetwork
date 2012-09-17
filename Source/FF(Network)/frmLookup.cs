@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FFNetwork;
 using FFModal.Controller;
+using System.Globalization;
 namespace FF_Network_
 {
     public partial class frmLookup : Form
@@ -27,6 +28,7 @@ namespace FF_Network_
         /// <param name="e"></param>
         private void frmLookup_Load(object sender, EventArgs e)
         {
+            this.Text = "FF: Lookup";
             if (lookupType == LookupType.Area)
             {
                 dgvLookup.AutoGenerateColumns = false;
@@ -58,6 +60,7 @@ namespace FF_Network_
             else if (lookupType == LookupType.Product)
             {
             }
+            dgvLookup.Focus();
         }
 
         /// <summary>
@@ -83,6 +86,53 @@ namespace FF_Network_
                 returnField2 = Convert.ToString(dgvLookup.SelectedRows[0].Cells[1].Value);
             }
             this.Close();
+        }
+
+        private void dgvLookup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+            {
+                dgvLookup.ClearSelection();
+                for (int i = 0; i < (dgvLookup.Rows.Count); i++)
+                {
+                    if (dgvLookup.Rows[i].Cells[1].Value.ToString().StartsWith(e.KeyChar.ToString(), true, CultureInfo.InvariantCulture) || dgvLookup.Rows[i].Cells[0].Value.ToString().StartsWith(e.KeyChar.ToString(), true, CultureInfo.InvariantCulture))
+                    {
+                        dgvLookup.Rows[i].Selected = true;
+                        return; // stop looping
+                    }
+                    else
+                    {
+                        dgvLookup.Rows[i].Selected = false;
+                    }
+                }
+            }
+
+        }
+
+        private void frmLookup_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsLetter(e.KeyChar))
+            {
+                dgvLookup.ClearSelection();
+                for (int i = 0; i < (dgvLookup.Rows.Count); i++)
+                {
+                    if (dgvLookup.Rows[i].Cells[1].Value.ToString().StartsWith(e.KeyChar.ToString(), true, CultureInfo.InvariantCulture))
+                    {
+                        dgvLookup.Rows[i].Selected = true;
+                        return; // stop looping
+                    }
+                    else
+                    {
+                        dgvLookup.Rows[i].Selected = false;
+                    }
+                }
+            }
+        }
+
+        private void frmLookup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.Close();
         }
     }
 }

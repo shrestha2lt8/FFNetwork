@@ -73,6 +73,7 @@
             this.dgvLookup.Name = "dgvLookup";
             this.dgvLookup.Size = new System.Drawing.Size(614, 307);
             this.dgvLookup.TabIndex = 2;
+            this.dgvLookup.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvLookup_KeyPress);
             // 
             // btnOk
             // 
@@ -106,11 +107,15 @@
             this.Controls.Add(this.dgvLookup);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLookup";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmLookup";
             this.Load += new System.EventHandler(this.frmLookup_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmLookup_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLookup_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLookup)).EndInit();
             this.ResumeLayout(false);
 
