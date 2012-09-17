@@ -716,8 +716,6 @@ namespace FFModal
         /// <param name="referenceID">Initial value of the ReferenceID property.</param>
         /// <param name="customerName">Initial value of the CustomerName property.</param>
         /// <param name="gender">Initial value of the Gender property.</param>
-        /// <param name="dateOfBirth">Initial value of the DateOfBirth property.</param>
-        /// <param name="createdDate">Initial value of the CreatedDate property.</param>
         /// <param name="createdBy">Initial value of the CreatedBy property.</param>
         /// <param name="nationality">Initial value of the Nationality property.</param>
         /// <param name="country">Initial value of the Country property.</param>
@@ -729,8 +727,7 @@ namespace FFModal
         /// <param name="homeNumber">Initial value of the HomeNumber property.</param>
         /// <param name="address">Initial value of the Address property.</param>
         /// <param name="customerTypeID">Initial value of the CustomerTypeID property.</param>
-        /// <param name="mROrientationDate">Initial value of the MROrientationDate property.</param>
-        public static Customer CreateCustomer(global::System.String membershipID, global::System.String introducerID, global::System.String referenceID, global::System.String customerName, global::System.String gender, global::System.DateTime dateOfBirth, global::System.DateTime createdDate, global::System.Int32 createdBy, global::System.String nationality, global::System.String country, global::System.String city, global::System.String municipality, global::System.String district, global::System.String street, global::System.String areaCode, global::System.String homeNumber, global::System.String address, global::System.Int32 customerTypeID, global::System.DateTime mROrientationDate)
+        public static Customer CreateCustomer(global::System.String membershipID, global::System.String introducerID, global::System.String referenceID, global::System.String customerName, global::System.String gender, global::System.Int32 createdBy, global::System.String nationality, global::System.String country, global::System.String city, global::System.String municipality, global::System.String district, global::System.String street, global::System.String areaCode, global::System.String homeNumber, global::System.String address, global::System.Int32 customerTypeID)
         {
             Customer customer = new Customer();
             customer.MembershipID = membershipID;
@@ -738,8 +735,6 @@ namespace FFModal
             customer.ReferenceID = referenceID;
             customer.CustomerName = customerName;
             customer.Gender = gender;
-            customer.DateOfBirth = dateOfBirth;
-            customer.CreatedDate = createdDate;
             customer.CreatedBy = createdBy;
             customer.Nationality = nationality;
             customer.Country = country;
@@ -751,7 +746,6 @@ namespace FFModal
             customer.HomeNumber = homeNumber;
             customer.Address = address;
             customer.CustomerTypeID = customerTypeID;
-            customer.MROrientationDate = mROrientationDate;
             return customer;
         }
 
@@ -908,9 +902,9 @@ namespace FFModal
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime DateOfBirth
+        public Nullable<global::System.DateTime> DateOfBirth
         {
             get
             {
@@ -925,16 +919,16 @@ namespace FFModal
                 OnDateOfBirthChanged();
             }
         }
-        private global::System.DateTime _DateOfBirth;
-        partial void OnDateOfBirthChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _DateOfBirth;
+        partial void OnDateOfBirthChanging(Nullable<global::System.DateTime> value);
         partial void OnDateOfBirthChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime CreatedDate
+        public Nullable<global::System.DateTime> CreatedDate
         {
             get
             {
@@ -949,8 +943,8 @@ namespace FFModal
                 OnCreatedDateChanged();
             }
         }
-        private global::System.DateTime _CreatedDate;
-        partial void OnCreatedDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _CreatedDate;
+        partial void OnCreatedDateChanging(Nullable<global::System.DateTime> value);
         partial void OnCreatedDateChanged();
     
         /// <summary>
@@ -1412,9 +1406,9 @@ namespace FFModal
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.DateTime MROrientationDate
+        public Nullable<global::System.DateTime> MROrientationDate
         {
             get
             {
@@ -1429,8 +1423,8 @@ namespace FFModal
                 OnMROrientationDateChanged();
             }
         }
-        private global::System.DateTime _MROrientationDate;
-        partial void OnMROrientationDateChanging(global::System.DateTime value);
+        private Nullable<global::System.DateTime> _MROrientationDate;
+        partial void OnMROrientationDateChanging(Nullable<global::System.DateTime> value);
         partial void OnMROrientationDateChanged();
 
         #endregion
