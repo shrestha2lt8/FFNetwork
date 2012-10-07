@@ -75,7 +75,7 @@ namespace FF_Network_
                 if (!mRegxExpression.IsMatch(txtEmail.Text.Trim()))
                 {
 
-                    MessageBox.Show("E-mail address format is not correct.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("E-mail address format is not correct.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     e.Cancel = true;
 
@@ -101,7 +101,7 @@ namespace FF_Network_
                 if (!mRegxExpression.IsMatch(txtWebsite.Text.Trim()))
                 {
 
-                    MessageBox.Show("Please enter correct website address.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Please enter correct website address.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     e.Cancel = true;
 

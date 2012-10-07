@@ -33,6 +33,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9BF0C5A873464869BEB3555598D629CD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_CC122451C7B245848828E06EBE6CB139"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -58,7 +64,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_0E7AA5811EE34A2C979E65AB2EACE082"
+        "OwnerKey" = "8:_1EE70794D5696F9ED69E8ADDD4207F56"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,7 +76,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1EE70794D5696F9ED69E8ADDD4207F56"
+        "OwnerKey" = "8:_0E7AA5811EE34A2C979E65AB2EACE082"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -91,6 +97,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -107,6 +121,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -174,11 +196,6 @@
             "AssemblyAsmDisplayName" = "8:FFModal, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_1EE70794D5696F9ED69E8ADDD4207F56"
-                    {
-                    "Name" = "8:FFModal.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:FFModal.dll"
             "TargetName" = "8:"
@@ -198,6 +215,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9BF0C5A873464869BEB3555598D629CD"
+            {
+            "SourcePath" = "8:..\\FF(Network)\\Resources\\ff+trade.ico"
+            "TargetName" = "8:ff+trade.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_D99015E3C7C8486CA76C97AB2C772EF4"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D6A5F8540BE438B8ABD48EF72170B16F"
             {
             "AssemblyRegister" = "3:1"
@@ -205,11 +242,6 @@
             "AssemblyAsmDisplayName" = "8:Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D6A5F8540BE438B8ABD48EF72170B16F"
-                    {
-                    "Name" = "8:Microsoft.VisualBasic.PowerPacks.Vs.dll"
-                    "Attributes" = "3:512"
-                    }
                 }
             "SourcePath" = "8:Microsoft.VisualBasic.PowerPacks.Vs.dll"
             "TargetName" = "8:"
@@ -428,7 +460,7 @@
             "Target" = "8:_0E7AA5811EE34A2C979E65AB2EACE082"
             "Folder" = "8:_664139DF10534DCEA70F32F8A02D0D4A"
             "WorkingFolder" = "8:_D99015E3C7C8486CA76C97AB2C772EF4"
-            "Icon" = "8:"
+            "Icon" = "8:_9BF0C5A873464869BEB3555598D629CD"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_3811ED69E1754EC7B6F25C53DE869D5E"
@@ -442,7 +474,7 @@
             "Target" = "8:_0E7AA5811EE34A2C979E65AB2EACE082"
             "Folder" = "8:_88EBD48832E54768B9C1815CDFF10AB5"
             "WorkingFolder" = "8:_D99015E3C7C8486CA76C97AB2C772EF4"
-            "Icon" = "8:"
+            "Icon" = "8:_9BF0C5A873464869BEB3555598D629CD"
             "Feature" = "8:"
             }
         }

@@ -117,31 +117,34 @@ namespace FF_Network_
         {
             if (txtMembershipID.Text.Trim() == "")
             {
-                MessageBox.Show("Membership Id cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Membership Id cannot be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtMembershipID.Focus();
                 return;
             }
             else
             {
-                int orderCount = 0;
-                Customer objCustomer = CustomerController.GetCustomer(txtMembershipID.Text.Trim(), out orderCount);
-                if (orderCount < 1)
+                if (MessageBox.Show("Do you want to delete this record", "FF Trade", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    CustomerController.Delete(txtMembershipID.Text);
-                    lstCustomer = CustomerController.GetAll();
-                    pCurrentRow = 0;
-                    if (lstCustomer.Count == 0)
+                    int orderCount = 0;
+                    Customer objCustomer = CustomerController.GetCustomer(txtMembershipID.Text.Trim(), out orderCount);
+                    if (orderCount < 1)
                     {
-                        clearControls();
+                        CustomerController.Delete(txtMembershipID.Text);
+                        lstCustomer = CustomerController.GetAll();
+                        pCurrentRow = 0;
+                        if (lstCustomer.Count == 0)
+                        {
+                            clearControls();
+                        }
+                        else
+                        {
+                            navigation(pCurrentRow);
+                        }
                     }
                     else
                     {
-                        navigation(pCurrentRow);
+                        MessageBox.Show("Customer can not be deleted.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                }
-                else
-                {
-                    MessageBox.Show("Customer can not be deleted.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -216,7 +219,7 @@ namespace FF_Network_
 
             if (txtCustomerName.Text.Trim() == "")
             {
-                MessageBox.Show("Customer name cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Customer name cannot be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtCustomerName.Focus();
                 return;
             }
@@ -224,14 +227,14 @@ namespace FF_Network_
 
             if (txtAreaCode.Text.Trim() == "")
             {
-                MessageBox.Show("Area code cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Area code cannot be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtAreaCode.Focus();
                 return;
             }
             
             if (txtHomeTelephone.Text.Trim() == "" && txtMobileNo.Text.Trim() == "" )
             {
-                MessageBox.Show("Home telephone number/Mobile number cannot be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Home telephone number/Mobile number cannot be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtHomeTelephone.Focus();
                 return; 
             }
@@ -241,7 +244,7 @@ namespace FF_Network_
 
             if (CustomerController.IsValidReferenceMemberID(txtReferenceID.Text))
             {
-                MessageBox.Show("Maximum horizontal node reached for this memebership id !!", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Maximum horizontal node reached for this memebership id !!", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtIntroducerID.Focus();
                 return;
             }
@@ -359,7 +362,7 @@ namespace FF_Network_
             {
             if (!DateTime.TryParseExact(this.mtxtCreatedDate.Text, "dd/MM/yyyy", ci, DateTimeStyles.None, out rs))
             {
-                MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
                 mtxtCreatedDate.Focus();
             }
@@ -377,7 +380,7 @@ namespace FF_Network_
             {
             if (!DateTime.TryParseExact(this.mtxtMRDate.Text, "dd/MM/yyyy", ci, DateTimeStyles.None, out rs))
             {
-                MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 e.Cancel = true;
                 mtxtMRDate.Focus();
             }
@@ -395,7 +398,7 @@ namespace FF_Network_
             {
                 if (!DateTime.TryParseExact(this.mtxtDOB.Text, "dd/MM/yyyy", ci, DateTimeStyles.None, out rs))
                 {
-                    MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("We're sorry, but the value you entered is not a valid date. Please change the value.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     e.Cancel = true;
                     mtxtDOB.Focus();
                 }
@@ -414,7 +417,7 @@ namespace FF_Network_
                 {
                     if (AreaController.GetAreaByCode(txtAreaCode.Text) == null)
                     {
-                        MessageBox.Show("Area code does not exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Area code does not exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         e.Cancel = true;
                         txtAreaCode.Focus();
                     }
@@ -440,7 +443,7 @@ namespace FF_Network_
                 if (!mRegxExpression.IsMatch(txtEmailAddress.Text.Trim()))
                 {
 
-                    MessageBox.Show("E-mail address format is not correct.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("E-mail address format is not correct.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     e.Cancel = true;
                     txtEmailAddress.Focus();
 
@@ -827,7 +830,7 @@ namespace FF_Network_
                     if (objCustomer == null)
                     {
                         clearControls();
-                        MessageBox.Show("Customer does not exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Customer does not exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         e.Cancel = true;
                     }
                     else
@@ -1031,7 +1034,7 @@ namespace FF_Network_
             }
             else
             {
-                MessageBox.Show("No records are available.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No records are available.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

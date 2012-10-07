@@ -32,14 +32,14 @@ namespace FF_Network_
         {
             if (UserController.GetUser(Utility.AdminUserName, txtOldPassword.Text) == null)
             {
-                MessageBox.Show("Please correct old password.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please correct old password.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtOldPassword.Focus();
                 return;
             }
 
             if (txtNewPassword.Text.Trim() != txtConfirmNewPassword.Text.Trim())
             {
-                MessageBox.Show("Please correct confirm new password.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please correct confirm new password.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtConfirmNewPassword.Focus();
                 return;
             }

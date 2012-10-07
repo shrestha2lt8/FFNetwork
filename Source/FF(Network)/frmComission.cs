@@ -39,21 +39,21 @@ namespace FF_Network_
             //validation
             if (Utility.IsNumber(txtMaxLevel.Text) == false)
             {
-                MessageBox.Show("Max level should be number", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Max level should be number", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtMaxLevel.Focus();
                 return;
             }
 
             if (Utility.IsNumber(txtMaxNode.Text) == false)
             {
-                MessageBox.Show("Max Node should be number", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Max Node should be number", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtMaxNode.Focus();
                 return;
             }
 
             if (Utility.IsDecimal(txtPercentage.Text) == false)
             {
-                MessageBox.Show("Percentage should be number or decimal", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Percentage should be number or decimal", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtPercentage.Focus();
                 return;
             }

@@ -94,30 +94,33 @@ namespace FF_Network_
         {
             if (txtAreaCode.Text.Trim() == "")
             {
-                MessageBox.Show("Area code can not be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Area code can not be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtAreaCode.Focus();
                 return;
             }
             else
             {
-                int customerCount=0;
-                Area objArea = AreaController.GetAreaByCode(txtAreaCode.Text.Trim(),out customerCount);
-                if (customerCount < 1)
+                if (MessageBox.Show("Do you want to delete this record", "FF Trade", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
-                    AreaController.Delete(txtAreaCode.Text);
-                    if ((pCurrentRow - 1) >= 0)
+                    int customerCount = 0;
+                    Area objArea = AreaController.GetAreaByCode(txtAreaCode.Text.Trim(), out customerCount);
+                    if (customerCount < 1)
                     {
-                        navigation(pCurrentRow - 1);
+                        AreaController.Delete(txtAreaCode.Text);
+                        if ((pCurrentRow - 1) >= 0)
+                        {
+                            navigation(pCurrentRow - 1);
+                        }
+                        else
+                        {
+                            clearControls();
+                        }
+                        lstArea = AreaController.GetAll();
                     }
                     else
                     {
-                        clearControls();
+                        MessageBox.Show("Area can not be deleted.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    lstArea = AreaController.GetAll();
-                }
-                else
-                {
-                    MessageBox.Show("Area can not be deleted.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -149,14 +152,14 @@ namespace FF_Network_
             //---------------------------------------------------------------------------------------------------------------------
             if (txtAreaCode.Text.Trim() == "")
             {
-                MessageBox.Show("Area code can not be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Area code can not be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtAreaCode.Focus();
                 return;
             }
 
             if (txtAreaName.Text.Trim() == "")
             {
-                MessageBox.Show("Area name can not be blank.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Area name can not be blank.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtAreaName.Focus();
                 return;
             }
@@ -172,14 +175,14 @@ namespace FF_Network_
             {
                 if (AreaController.GetAreaByCode(txtAreaCode.Text.Trim()) != null)
                 {
-                    MessageBox.Show("Area code already exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Area code already exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtAreaCode.Focus();
                     return;
                 }
 
                 if (AreaController.GetAreaByCode(txtAreaName.Text.Trim()) != null)
                 {
-                    MessageBox.Show("Area name already exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Area name already exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     txtAreaCode.Focus();
                     return;
                 }
@@ -226,7 +229,7 @@ namespace FF_Network_
                 {
                 if (AreaController.GetAreaByCode(txtAreaCode.Text) == null)
                 {
-                    MessageBox.Show("Area code does not exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Area code does not exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     e.Cancel = true;
                 }
                 }
@@ -368,7 +371,7 @@ namespace FF_Network_
             }
             else
             {
-                MessageBox.Show("No records are available.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No records are available.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
         #endregion

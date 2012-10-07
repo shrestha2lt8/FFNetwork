@@ -43,7 +43,7 @@ namespace FF_Network_
         {
             if (UserController.GetUser(txtUser.Text, txtPassword.Text) == null)
             {
-                MessageBox.Show("Invalid login detail !!", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid login detail !!", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {

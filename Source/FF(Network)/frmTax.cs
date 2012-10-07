@@ -34,7 +34,7 @@ namespace FF_Network_
                 }
                 else
                 {
-                    MessageBox.Show("Tax rate should be number","FF Network",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("Tax rate should be number","FF Trade",MessageBoxButtons.OK,MessageBoxIcon.Information);
                     txtTaxRate.Focus();
                 }
         }

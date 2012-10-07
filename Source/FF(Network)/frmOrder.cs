@@ -125,7 +125,7 @@ namespace FF_Network_
             }
             else
             {
-                MessageBox.Show("No records are available.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("No records are available.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -146,7 +146,7 @@ namespace FF_Network_
             EnableControls(false);
             if (ComissionSettingController.GetComission() == null)
             {
-                MessageBox.Show("Please set the commision settings.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Please set the commision settings.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
         }
@@ -179,20 +179,23 @@ namespace FF_Network_
                 case "BTNDELETE":
                     this.Tag = FormAction.Delete;
                     if (string.IsNullOrEmpty(txtOrderID.Text.Trim()))
-                        MessageBox.Show("No record is selected to delete.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("No record is selected to delete.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     else
                     {
-                        if (CustomerComissionController.Delete(txtOrderID.Text.Trim()) == true)
+                        if (MessageBox.Show("Do you want to delete this record", "FF Trade", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                         {
-                            OrderController.Delete(txtOrderID.Text.Trim());
-                            lstOrder = OrderController.GetAll();
-                            if (pCurrentRow > 0)
+                            if (CustomerComissionController.Delete(txtOrderID.Text.Trim()) == true)
                             {
-                                navigation(pCurrentRow - 1);
-                            }
-                            else
-                            {
-                                ClearCtrls();
+                                OrderController.Delete(txtOrderID.Text.Trim());
+                                lstOrder = OrderController.GetAll();
+                                if (pCurrentRow > 0)
+                                {
+                                    navigation(pCurrentRow - 1);
+                                }
+                                else
+                                {
+                                    ClearCtrls();
+                                }
                             }
                         }
                     }
@@ -209,14 +212,14 @@ namespace FF_Network_
             //-------------------------------------------------------------------------------------------------------------
             if (mtxtOrderDate.Text.Trim() == "/  /")
             {
-                MessageBox.Show("Order date can not be blank", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Order date can not be blank", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
             {
                 if(Utility.IsValidDate(mtxtOrderDate.Text.Trim())==false)
                 {
-                      MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                      MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                 }
             }
@@ -225,7 +228,7 @@ namespace FF_Network_
             {
                 if (Utility.IsValidDate(mtxtDeliverdDate.Text.Trim()) == false)
                 {
-                    MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
@@ -234,7 +237,7 @@ namespace FF_Network_
             {
                 if (Utility.IsValidDate(mtxtPaidDate.Text.Trim()) == false)
                 {
-                    MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Date should be on dd/MM/yyyy format", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
@@ -243,7 +246,7 @@ namespace FF_Network_
             {
                 if (mtxtDeliverdDate.Text.Trim() == "/  /")
                 {
-                    MessageBox.Show("Deliverd date can not be blank", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Deliverd date can not be blank", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mtxtDeliverdDate.Focus();
                     return;
                 }
@@ -253,7 +256,7 @@ namespace FF_Network_
             {
                 if (mtxtPaidDate.Text.Trim() == "/  /")
                 {
-                    MessageBox.Show("Paid date can not be blank", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Paid date can not be blank", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     mtxtPaidDate.Focus();
                     return;
                 }
@@ -302,13 +305,13 @@ namespace FF_Network_
                         }
                         else
                         {
-                            MessageBox.Show("Application encounter fatal error.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Application encounter fatal error.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         
                     }
                     else
                     {
-                        MessageBox.Show("Order id already exists.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Order id already exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
                 case FormAction.Edit:
@@ -316,7 +319,7 @@ namespace FF_Network_
                        Convert.ToDecimal(txtAmount.Text.Trim()), txtDesc.Text.Trim(), txtRemarks.Text.Trim(), Utility.GetDate(mtxtOrderDate.Text), chkIsDelivered.Checked, chkIsPaid.Checked, Utility.GetConvertedDate(mtxtDeliverdDate.Text), Utility.GetConvertedDate(mtxtPaidDate.Text)) == false)
                     {
 
-                        MessageBox.Show("Application encounter fatal error.", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Application encounter fatal error.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
@@ -452,7 +455,7 @@ namespace FF_Network_
                     }
                     else
                     {
-                        MessageBox.Show("Invalid Order id", "FF Network", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Invalid Order id", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         e.Cancel = true;
                     }
                 }
