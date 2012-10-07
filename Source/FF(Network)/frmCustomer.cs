@@ -829,7 +829,6 @@ namespace FF_Network_
                     Customer objCustomer=CustomerController.GetCustomer(txtMembershipID.Text);
                     if (objCustomer == null)
                     {
-                        clearControls();
                         MessageBox.Show("Customer does not exists.", "FF Trade", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         e.Cancel = true;
                     }
