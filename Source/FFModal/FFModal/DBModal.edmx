@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NetworkModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="NetworkModelStoreContainer">
+          <EntitySet Name="Area" EntityType="NetworkModel.Store.Area" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Bonus" EntityType="NetworkModel.Store.Bonus" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ComissionSetting" EntityType="NetworkModel.Store.ComissionSetting" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Company" EntityType="NetworkModel.Store.Company" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="NetworkModel.Store.Customer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerComission" EntityType="NetworkModel.Store.CustomerComission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CustomerType" EntityType="NetworkModel.Store.CustomerType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Order" EntityType="NetworkModel.Store.Order" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TaxSetting" EntityType="NetworkModel.Store.TaxSetting" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="NetworkModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.Store.FK_Customer_Area">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.Store.FK_Customer_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="NetworkModel.Store.FK_Customer_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComission_CustomerComission" Association="NetworkModel.Store.FK_CustomerComission_CustomerComission">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="CustomerComission" EntitySet="CustomerComission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComission_Order1" Association="NetworkModel.Store.FK_CustomerComission_Order1">
+            <End Role="Order" EntitySet="Order" />
+            <End Role="CustomerComission" EntitySet="CustomerComission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.Store.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaCode" />
+          </Key>
+          <Property Name="AreaCode" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="AreaDescription" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Bonus">
+          <Key>
+            <PropertyRef Name="BonousPaidID" />
+          </Key>
+          <Property Name="BonousPaidID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BonousPaidDate" Type="datetime" Nullable="false" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="TaxAmount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="NetAmountPaid" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="ComissionSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaxLevel" Type="int" Nullable="false" />
+          <Property Name="MaxNode" Type="int" Nullable="false" />
+          <Property Name="ComissionPercentage" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="RegistrationNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PanNumber" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Fax" Type="varchar" MaxLength="50" />
+          <Property Name="Website" Type="varchar" MaxLength="50" />
+          <Property Name="ContactPerson" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MembershipID" />
+          </Key>
+          <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="IntroducerID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ReferenceID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CustomerName" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="BenificiaryName" Type="varchar" MaxLength="250" />
+          <Property Name="Gender" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="DateOfBirth" Type="datetime" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="MaratialStatus" Type="varchar" MaxLength="50" />
+          <Property Name="Nationality" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="CitizenshipID" Type="varchar" MaxLength="50" />
+          <Property Name="LicenseID" Type="varchar" MaxLength="50" />
+          <Property Name="PassportID" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Municipality" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="District" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Street" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="AreaCode" Type="varchar" Nullable="false" MaxLength="5" />
+          <Property Name="HomeNumber" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="HomeTelephone" Type="varchar" MaxLength="100" />
+          <Property Name="Mobile" Type="varchar" MaxLength="100" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="100" />
+          <Property Name="Photo" Type="image" />
+          <Property Name="CustomerTypeID" Type="int" Nullable="false" />
+          <Property Name="MROrientationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="CustomerComission">
+          <Key>
+            <PropertyRef Name="ComissionID" />
+          </Key>
+          <Property Name="ComissionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ComissionPaidDate" Type="datetime" />
+          <Property Name="IsComissionPaid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="MembershipID" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="Amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="IsDelivered" Type="bit" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="DeliveredDate" Type="datetime" />
+          <Property Name="PaidDate" Type="datetime" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="Remarks" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="TaxSetting">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Name="TaxID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaxRate" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="Role" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="MiddleName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="Designation" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Area">
+          <End Role="Area" Type="NetworkModel.Store.Area" Multiplicity="1" />
+          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerType">
+          <End Role="CustomerType" Type="NetworkModel.Store.CustomerType" Multiplicity="1" />
+          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Role="User" Type="NetworkModel.Store.User" Multiplicity="1" />
+          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComission_CustomerComission">
+          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="1" />
+          <End Role="CustomerComission" Type="NetworkModel.Store.CustomerComission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="CustomerComission">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComission_Order1">
+          <End Role="Order" Type="NetworkModel.Store.Order" Multiplicity="1" />
+          <End Role="CustomerComission" Type="NetworkModel.Store.CustomerComission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="CustomerComission">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Role="Customer" Type="NetworkModel.Store.Customer" Multiplicity="1" />
+          <End Role="Order" Type="NetworkModel.Store.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NetworkModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="NetworkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Areas" EntityType="NetworkModel.Area" />
+          <EntitySet Name="Bonus" EntityType="NetworkModel.Bonu" />
+          <EntitySet Name="ComissionSettings" EntityType="NetworkModel.ComissionSetting" />
+          <EntitySet Name="Companies" EntityType="NetworkModel.Company" />
+          <EntitySet Name="Customers" EntityType="NetworkModel.Customer" />
+          <EntitySet Name="CustomerComissions" EntityType="NetworkModel.CustomerComission" />
+          <EntitySet Name="CustomerTypes" EntityType="NetworkModel.CustomerType" />
+          <EntitySet Name="Orders" EntityType="NetworkModel.Order" />
+          <EntitySet Name="TaxSettings" EntityType="NetworkModel.TaxSetting" />
+          <EntitySet Name="Users" EntityType="NetworkModel.User" />
+          <AssociationSet Name="FK_Customer_Area" Association="NetworkModel.FK_Customer_Area">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_CustomerType" Association="NetworkModel.FK_Customer_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_User" Association="NetworkModel.FK_Customer_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComission_CustomerComission" Association="NetworkModel.FK_CustomerComission_CustomerComission">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="CustomerComission" EntitySet="CustomerComissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Order_Customer" Association="NetworkModel.FK_Order_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerComission_Order1" Association="NetworkModel.FK_CustomerComission_Order1">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="CustomerComission" EntitySet="CustomerComissions" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaCode" />
+          </Key>
+          <Property Type="String" Name="AreaCode" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaDescription" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customers" Relationship="NetworkModel.FK_Customer_Area" FromRole="Area" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Bonu">
+          <Key>
+            <PropertyRef Name="BonousPaidID" />
+          </Key>
+          <Property Type="Int32" Name="BonousPaidID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="BonousPaidDate" Nullable="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="TaxAmount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="NetAmountPaid" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ComissionSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="MaxLevel" Nullable="false" />
+          <Property Type="Int32" Name="MaxNode" Nullable="false" />
+          <Property Type="Decimal" Name="ComissionPercentage" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="RegistrationNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PanNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PhoneNumber" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Website" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ContactPerson" MaxLength="250" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="MembershipID" />
+          </Key>
+          <Property Type="String" Name="MembershipID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IntroducerID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ReferenceID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerName" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BenificiaryName" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="DateOfBirth" />
+          <Property Type="DateTime" Name="CreatedDate" />
+          <Property Type="Int32" Name="CreatedBy" Nullable="false" />
+          <Property Type="String" Name="MaratialStatus" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Nationality" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CitizenshipID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LicenseID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PassportID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="City" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Municipality" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="District" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Street" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AreaCode" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HomeNumber" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="HomeTelephone" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Mobile" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EmailAddress" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Binary" Name="Photo" MaxLength="Max" FixedLength="false" />
+          <Property Type="Int32" Name="CustomerTypeID" Nullable="false" />
+          <Property Type="DateTime" Name="MROrientationDate" />
+          <NavigationProperty Name="Area" Relationship="NetworkModel.FK_Customer_Area" FromRole="Customer" ToRole="Area" />
+          <NavigationProperty Name="CustomerType" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="Customer" ToRole="CustomerType" />
+          <NavigationProperty Name="User" Relationship="NetworkModel.FK_Customer_User" FromRole="Customer" ToRole="User" />
+          <NavigationProperty Name="CustomerComissions" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="Customer" ToRole="CustomerComission" />
+          <NavigationProperty Name="Orders" Relationship="NetworkModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CustomerComission">
+          <Key>
+            <PropertyRef Name="ComissionID" />
+          </Key>
+          <Property Type="Int32" Name="ComissionID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MembershipID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="DateTime" Name="ComissionPaidDate" Nullable="true" />
+          <Property Type="Boolean" Name="IsComissionPaid" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_CustomerComission_CustomerComission" FromRole="CustomerComission" ToRole="Customer" />
+          <NavigationProperty Name="Order" Relationship="NetworkModel.FK_CustomerComission_Order1" FromRole="CustomerComission" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Customers" Relationship="NetworkModel.FK_Customer_CustomerType" FromRole="CustomerType" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Type="String" Name="OrderID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MembershipID" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Boolean" Name="IsDelivered" Nullable="true" />
+          <Property Type="Boolean" Name="IsPaid" Nullable="true" />
+          <Property Type="DateTime" Name="DeliveredDate" Nullable="true" />
+          <Property Type="DateTime" Name="PaidDate" Nullable="true" />
+          <Property Type="DateTime" Name="OrderDate" Nullable="false" />
+          <Property Type="String" Name="Remarks" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="true" />
+          <NavigationProperty Name="Customer" Relationship="NetworkModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="CustomerComissions" Relationship="NetworkModel.FK_CustomerComission_Order1" FromRole="Order" ToRole="CustomerComission" />
+        </EntityType>
+        <EntityType Name="TaxSetting">
+          <Key>
+            <PropertyRef Name="TaxID" />
+          </Key>
+          <Property Type="Int32" Name="TaxID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TaxRate" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Type="Int32" Name="UserID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Role" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="MiddleName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Designation" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="NetworkModel.FK_Customer_User" FromRole="User" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_Customer_Area">
+          <End Type="NetworkModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaCode" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="AreaCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_CustomerType">
+          <End Type="NetworkModel.CustomerType" Role="CustomerType" Multiplicity="1" />
+          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_User">
+          <End Type="NetworkModel.User" Role="User" Multiplicity="1" />
+          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="CreatedBy" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComission_CustomerComission">
+          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="NetworkModel.CustomerComission" Role="CustomerComission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="CustomerComission">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Order_Customer">
+          <End Type="NetworkModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="NetworkModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="MembershipID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="MembershipID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerComission_Order1">
+          <End Type="NetworkModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="NetworkModel.CustomerComission" Role="CustomerComission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="CustomerComission">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NetworkModelStoreContainer" CdmEntityContainer="NetworkEntities">
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="NetworkModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="AreaDescription" ColumnName="AreaDescription" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bonus">
+            <EntityTypeMapping TypeName="NetworkModel.Bonu">
+              <MappingFragment StoreEntitySet="Bonus">
+                <ScalarProperty Name="NetAmountPaid" ColumnName="NetAmountPaid" />
+                <ScalarProperty Name="TaxAmount" ColumnName="TaxAmount" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BonousPaidDate" ColumnName="BonousPaidDate" />
+                <ScalarProperty Name="BonousPaidID" ColumnName="BonousPaidID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ComissionSettings">
+            <EntityTypeMapping TypeName="NetworkModel.ComissionSetting">
+              <MappingFragment StoreEntitySet="ComissionSetting">
+                <ScalarProperty Name="ComissionPercentage" ColumnName="ComissionPercentage" />
+                <ScalarProperty Name="MaxNode" ColumnName="MaxNode" />
+                <ScalarProperty Name="MaxLevel" ColumnName="MaxLevel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="NetworkModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ContactPerson" ColumnName="ContactPerson" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PanNumber" ColumnName="PanNumber" />
+                <ScalarProperty Name="RegistrationNumber" ColumnName="RegistrationNumber" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="NetworkModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="MROrientationDate" ColumnName="MROrientationDate" />
+                <ScalarProperty Name="CustomerTypeID" ColumnName="CustomerTypeID" />
+                <ScalarProperty Name="Photo" ColumnName="Photo" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="HomeTelephone" ColumnName="HomeTelephone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="HomeNumber" ColumnName="HomeNumber" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="District" ColumnName="District" />
+                <ScalarProperty Name="Municipality" ColumnName="Municipality" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="PassportID" ColumnName="PassportID" />
+                <ScalarProperty Name="LicenseID" ColumnName="LicenseID" />
+                <ScalarProperty Name="CitizenshipID" ColumnName="CitizenshipID" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="MaratialStatus" ColumnName="MaratialStatus" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="BenificiaryName" ColumnName="BenificiaryName" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ReferenceID" ColumnName="ReferenceID" />
+                <ScalarProperty Name="IntroducerID" ColumnName="IntroducerID" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerComissions">
+            <EntityTypeMapping TypeName="NetworkModel.CustomerComission">
+              <MappingFragment StoreEntitySet="CustomerComission">
+                <ScalarProperty Name="IsComissionPaid" ColumnName="IsComissionPaid" />
+                <ScalarProperty Name="ComissionPaidDate" ColumnName="ComissionPaidDate" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="ComissionID" ColumnName="ComissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="NetworkModel.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="NetworkModel.Order">
+              <MappingFragment StoreEntitySet="Order">
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="PaidDate" ColumnName="PaidDate" />
+                <ScalarProperty Name="DeliveredDate" ColumnName="DeliveredDate" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="IsDelivered" ColumnName="IsDelivered" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="MembershipID" ColumnName="MembershipID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxSettings">
+            <EntityTypeMapping TypeName="NetworkModel.TaxSetting">
+              <MappingFragment StoreEntitySet="TaxSetting">
+                <ScalarProperty Name="TaxRate" ColumnName="TaxRate" />
+                <ScalarProperty Name="TaxID" ColumnName="TaxID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="NetworkModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DBModal" ZoomLevel="79">
+        <EntityTypeShape EntityType="NetworkModel.Area" Width="1.5" PointX="0.75" PointY="4.125" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="NetworkModel.Bonu" Width="1.5" PointX="5.75" PointY="0.75" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="NetworkModel.ComissionSetting" Width="1.5" PointX="7.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="NetworkModel.Company" Width="1.5" PointX="7.75" PointY="7.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="NetworkModel.Customer" Width="1.5" PointX="3" PointY="1.25" Height="7.364726562499996" />
+        <EntityTypeShape EntityType="NetworkModel.CustomerComission" Width="1.5" PointX="7.5" PointY="4.25" Height="2.5571907552083388" />
+        <EntityTypeShape EntityType="NetworkModel.CustomerType" Width="1.5" PointX="0.75" PointY="1.25" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="NetworkModel.Order" Width="1.5" PointX="5.25" PointY="6.5" Height="3.326396484374996" />
+        <EntityTypeShape EntityType="NetworkModel.TaxSetting" Width="1.5" PointX="9.75" PointY="0.75" Height="1.4033821614583388" />
+        <EntityTypeShape EntityType="NetworkModel.User" Width="1.5" PointX="0.75" PointY="6.625" Height="2.9417936197916674" />
+        <AssociationConnector Association="NetworkModel.FK_Customer_Area" >
+          <ConnectorPoint PointX="2.25" PointY="4.9228417968750016" />
+          <ConnectorPoint PointX="3" PointY="4.9228417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="NetworkModel.FK_Customer_CustomerType" >
+          <ConnectorPoint PointX="2.25" PointY="2.0478417968750016" />
+          <ConnectorPoint PointX="3" PointY="2.0478417968750016" />
+        </AssociationConnector>
+        <AssociationConnector Association="NetworkModel.FK_Customer_User" >
+          <ConnectorPoint PointX="2.25" PointY="7.619863281249998" />
+          <ConnectorPoint PointX="3" PointY="7.619863281249998" />
+        </AssociationConnector>
+        <AssociationConnector Association="NetworkModel.FK_CustomerComission_CustomerComission" >
+          <ConnectorPoint PointX="4.5" PointY="5.34375" />
+          <ConnectorPoint PointX="7.5" PointY="5.34375" />
+        </AssociationConnector>
+        <AssociationConnector Association="NetworkModel.FK_Order_Customer" >
+          <ConnectorPoint PointX="4.5" PointY="7.557363281249998" />
+          <ConnectorPoint PointX="5.25" PointY="7.557363281249998" />
+        </AssociationConnector>
+        <AssociationConnector Association="NetworkModel.FK_CustomerComission_Order1" >
+          <ConnectorPoint PointX="6.75" PointY="6.6535953776041694" />
+          <ConnectorPoint PointX="7.5" PointY="6.6535953776041694" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
