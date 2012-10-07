@@ -259,7 +259,7 @@ namespace FF_Network_
               
                 CustomerController.Add(txtMembershipID.Text, txtIntroducerID.Text, txtReferenceID.Text, txtCustomerName.Text,
                     txtBenificiaryName.Text, ddlGender.Text, this.GetDate(mtxtDOB.Text),
-                    this.GetDate(mtxtCreatedDate.Text), 
+                    this.GetDate(mtxtCreatedDate.Text),
                     Utility.AdminUserId, ddlMaritialStatus.Text, ddlNationality.Text , txtCitizenshipID.Text, 
                     txtLicenseID.Text, txtPassportID.Text, ddlCountry.Text, ddlCity.Text, ddlMunicipality.Text, 
                     ddlDistrict.Text, txtStreet.Text, txtHouseNo.Text, txtAreaCode.Text, txtAddress.Text, 
@@ -1060,7 +1060,7 @@ namespace FF_Network_
             {
                 try
                 {
-                    return DateTime.ParseExact(mtxtCreatedDate.Text, "dd/MM/yyyy", null);
+                    return DateTime.ParseExact(pDate, "dd/MM/yyyy", null);
                 }
                 catch (Exception ex)
                 {
