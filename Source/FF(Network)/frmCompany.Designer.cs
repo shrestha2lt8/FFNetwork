@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompany));
             this.grbCompany = new System.Windows.Forms.GroupBox();
             this.txtContactPerson = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -274,6 +275,7 @@
             this.Controls.Add(this.grbCompany);
             this.Controls.Add(this.shapeContainer1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
