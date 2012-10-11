@@ -34,6 +34,7 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.companyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.changepasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.masterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.areaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.customerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.lblCompany = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblDate = new System.Windows.Forms.ToolStripStatusLabel();
-            this.changepasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -104,6 +104,13 @@
             this.companyToolStripMenuItem.Text = "Company";
             this.companyToolStripMenuItem.Click += new System.EventHandler(this.companyToolStripMenuItem_Click);
             // 
+            // changepasswordToolStripMenuItem
+            // 
+            this.changepasswordToolStripMenuItem.Name = "changepasswordToolStripMenuItem";
+            this.changepasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.changepasswordToolStripMenuItem.Text = "Change &password";
+            this.changepasswordToolStripMenuItem.Click += new System.EventHandler(this.changepasswordToolStripMenuItem_Click);
+            // 
             // masterToolStripMenuItem
             // 
             this.masterToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -117,21 +124,21 @@
             // areaToolStripMenuItem
             // 
             this.areaToolStripMenuItem.Name = "areaToolStripMenuItem";
-            this.areaToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.areaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.areaToolStripMenuItem.Text = "Area";
             this.areaToolStripMenuItem.Click += new System.EventHandler(this.areaToolStripMenuItem_Click);
             // 
             // customerToolStripMenuItem
             // 
             this.customerToolStripMenuItem.Name = "customerToolStripMenuItem";
-            this.customerToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.customerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.customerToolStripMenuItem.Text = "Customer";
             this.customerToolStripMenuItem.Click += new System.EventHandler(this.customerToolStripMenuItem_Click);
             // 
             // orderToolStripMenuItem
             // 
             this.orderToolStripMenuItem.Name = "orderToolStripMenuItem";
-            this.orderToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.orderToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.orderToolStripMenuItem.Text = "Order";
             this.orderToolStripMenuItem.Click += new System.EventHandler(this.orderToolStripMenuItem_Click);
             // 
@@ -155,6 +162,7 @@
             this.orderReportToolStripMenuItem.Name = "orderReportToolStripMenuItem";
             this.orderReportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.orderReportToolStripMenuItem.Text = "Order";
+            this.orderReportToolStripMenuItem.Click += new System.EventHandler(this.orderReportToolStripMenuItem_Click);
             // 
             // settingToolStripMenuItem
             // 
@@ -244,13 +252,6 @@
             this.lblDate.Name = "lblDate";
             this.lblDate.Size = new System.Drawing.Size(69, 20);
             this.lblDate.Text = "                   ";
-            // 
-            // changepasswordToolStripMenuItem
-            // 
-            this.changepasswordToolStripMenuItem.Name = "changepasswordToolStripMenuItem";
-            this.changepasswordToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.changepasswordToolStripMenuItem.Text = "Change &password";
-            this.changepasswordToolStripMenuItem.Click += new System.EventHandler(this.changepasswordToolStripMenuItem_Click);
             // 
             // frmMain
             // 

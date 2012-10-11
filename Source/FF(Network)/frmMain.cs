@@ -155,5 +155,11 @@ namespace FF_Network_
             frmChangePassword frmChange = new frmChangePassword();
             frmChange.ShowDialog();
         }
+
+        private void orderReportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrderReport frmChange = new frmOrderReport();
+            frmChange.ShowDialog();
+        }
     }
 }
