@@ -106,8 +106,9 @@
             this.mtxtMRDate = new System.Windows.Forms.MaskedTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblNoPhoto = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblMarketingDate = new System.Windows.Forms.Label();
+            this.lblDateOfBirth = new System.Windows.Forms.Label();
+            this.lblFullName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -515,7 +516,7 @@
             // lblCreatedDate
             // 
             this.lblCreatedDate.AutoSize = true;
-            this.lblCreatedDate.Location = new System.Drawing.Point(305, 9);
+            this.lblCreatedDate.Location = new System.Drawing.Point(371, 5);
             this.lblCreatedDate.Name = "lblCreatedDate";
             this.lblCreatedDate.Size = new System.Drawing.Size(70, 13);
             this.lblCreatedDate.TabIndex = 13;
@@ -903,31 +904,41 @@
             this.lblNoPhoto.Text = "No photo to display";
             this.lblNoPhoto.Visible = false;
             // 
-            // label4
+            // lblMarketingDate
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(418, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 13);
-            this.label4.TabIndex = 69;
-            this.label4.Text = "(dd/MM/yyyy)";
+            this.lblMarketingDate.AutoSize = true;
+            this.lblMarketingDate.Location = new System.Drawing.Point(418, 158);
+            this.lblMarketingDate.Name = "lblMarketingDate";
+            this.lblMarketingDate.Size = new System.Drawing.Size(73, 13);
+            this.lblMarketingDate.TabIndex = 69;
+            this.lblMarketingDate.Text = "(dd/MM/yyyy)";
             // 
-            // label1
+            // lblDateOfBirth
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(424, 307);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(73, 13);
-            this.label1.TabIndex = 70;
-            this.label1.Text = "(dd/MM/yyyy)";
+            this.lblDateOfBirth.AutoSize = true;
+            this.lblDateOfBirth.Location = new System.Drawing.Point(424, 307);
+            this.lblDateOfBirth.Name = "lblDateOfBirth";
+            this.lblDateOfBirth.Size = new System.Drawing.Size(73, 13);
+            this.lblDateOfBirth.TabIndex = 70;
+            this.lblDateOfBirth.Text = "(dd/MM/yyyy)";
+            // 
+            // lblFullName
+            // 
+            this.lblFullName.AutoSize = true;
+            this.lblFullName.Location = new System.Drawing.Point(419, 224);
+            this.lblFullName.Name = "lblFullName";
+            this.lblFullName.Size = new System.Drawing.Size(54, 13);
+            this.lblFullName.TabIndex = 71;
+            this.lblFullName.Text = "Full Name";
             // 
             // frmCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 559);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblFullName);
+            this.Controls.Add(this.lblDateOfBirth);
+            this.Controls.Add(this.lblMarketingDate);
             this.Controls.Add(this.lblNoPhoto);
             this.Controls.Add(this.mtxtDOB);
             this.Controls.Add(this.mtxtMRDate);
@@ -1095,7 +1106,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Microsoft.VisualBasic.PowerPacks.RectangleShape S;
         private System.Windows.Forms.Label lblNoPhoto;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblMarketingDate;
+        private System.Windows.Forms.Label lblDateOfBirth;
+        private System.Windows.Forms.Label lblFullName;
     }
 }

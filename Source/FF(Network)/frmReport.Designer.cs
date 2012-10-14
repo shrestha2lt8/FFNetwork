@@ -78,6 +78,7 @@
             this.Name = "frmReport";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FF: Report";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReport_FormClosing);
             this.Load += new System.EventHandler(this.frmReport_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmReport_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.usp_GetOrdersBindingSource)).EndInit();

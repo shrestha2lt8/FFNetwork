@@ -47,5 +47,11 @@ namespace FF_Network_
             if (e.KeyCode == Keys.Escape)
                 this.Close();
         }
+
+        private void frmReport_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            reportViewer1.LocalReport.ReleaseSandboxAppDomain();
+
+        }
     }
 }

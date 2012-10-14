@@ -67,12 +67,13 @@ namespace FF_Network_
                     return;
                 }
             }
-            this.Close();
+         
             frmReport frmReport = new frmReport();
             frmReport.dtStartDate = Utility.GetConvertedDate(mtxtStartDate.Text.Trim());
             frmReport.dtUntilDate = Utility.GetConvertedDate(mtxtUntilDate.Text.Trim());
             frmReport.ShowDialog();
             frmReport.Focus();
+            this.Close();
     
         }
     }
